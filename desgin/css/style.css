@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap');
 
 :root{
-   --main-color:#8e44ad;
+   --main-color:#3498db;
    --red:#e74c3c;
    --orange:#f39c12;
    --light-color:#888;
@@ -162,7 +162,6 @@ section{
    padding:1.5rem 2rem;
    display: flex;
    gap:2rem;
-
 }
 
 .header .flex .search-form input{
@@ -1274,11 +1273,6 @@ section{
    margin: 1rem 0;
 }
 
-
-
-
-
-
 .footer{
    background-color: var(--white);
    border-top: var(--border);
@@ -1290,14 +1284,11 @@ section{
    color:var(--black);
    margin-top: 1rem;
    z-index: 1000;
-   /* padding-bottom: 9.5rem; */
 }
 
 .footer span{
    color:var(--main-color);
 }
-
-
 
 @media (max-width:1200px){
 
@@ -1395,7 +1386,7 @@ section{
 }
 
 .home-content .highlight {
-   color: #3b82f6;
+   color: #3498db;
 }
 
 .home-content p {
@@ -1423,7 +1414,7 @@ section{
 .students-info p {
    font-size: 18px;
    font-weight: bold;
-   color: #3b82f6;
+   color: #3498db;
    margin-right: 15px;
 }
 
@@ -1505,7 +1496,7 @@ section{
  }
  
  .feature-item span {
-   color: #2563eb;
+   color: #3498db;
    font-size: 20px;
    margin-right: 10px;
  }
@@ -1513,7 +1504,7 @@ section{
  /* Nút đăng ký */
  .register-btn {
    display: inline-block;
-   background-color: #2563eb;
+   background-color: #3498db;
    color: white;
    padding: 12px 20px;
    border-radius: 8px;
@@ -1525,7 +1516,7 @@ section{
  }
  
  .register-btn:hover {
-   background-color: #1e40af;
+   background-color: #2980b9;
  }
  
  /* Đoạn mô tả */
@@ -1535,13 +1526,34 @@ section{
    max-width: 600px;
    margin-left: auto;
    margin-right: auto;
-   font-size: 18px; /* Tăng kích thước chữ */
+   font-size: 18px;
    line-height: 1.6;
  }
  
  /* Mỗi dòng lợi ích */
  .feature-item p {
-   font-size: 18px; /* Tăng kích thước chữ */
+   font-size: 18px;
    font-weight: 500;
  }
  
+ .dark .section-container {
+   background-color: #1e1e1e;
+   color: #ffffff;
+   border-radius: 8px;
+}
+
+.dark .section-container p,
+.dark .section-container h2,
+.dark .section-container span {
+   color: #ffffff !important;
+}
+
+.dark .section-container .btn {
+   background-color: #3498db;
+   color: white;
+}
+
+.dark .section-container .btn:hover {
+   background-color: #2980b9;
+}
+
