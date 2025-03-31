@@ -54,11 +54,15 @@
       <i class="fas fa-times"></i>
    </div>
 
-   <div class="profile">
-      <img src="images/pic-1.jpg" class="image" alt="">
-      <h3 class="name">Quang Quách</h3>
+   <div class="profile" style="font-size: 14px;">
+      <img src="images/pic-1.jpg" class="image" alt="Ảnh đại diện">
+      <h3 class="name">Quách Quang</h3>
       <p class="role">Học viên</p>
       <a href="profile.html" class="btn">Xem thông tin</a>
+      <div class="flex-btn">
+         <a href="login.html" class="option-btn">Đăng nhập</a>
+         <a href="register.html" class="option-btn">Đăng ký</a>
+      </div>
    </div>
 
    <nav class="navbar">
@@ -77,148 +81,82 @@
       <div class="video">
          <video src="images/vid-1.mp4" controls poster="images/post-1-1.png" id="video"></video>
       </div>
-      <h3 class="title">complete HTML tutorial (part 01)</h3>
+      <h3 class="title">01. Đại cương về hàm số</h3>
       <div class="info">
-         <p class="date"><i class="fas fa-calendar"></i><span>22-10-2022</span></p>
-         <p class="date"><i class="fas fa-heart"></i><span>44 likes</span></p>
+         <p class="date"><i class="fas fa-calendar"></i><span>26-03-2025</span></p>
+         <p class="date"><i class="fas fa-heart"></i><span>44 lượt thích</span></p>
       </div>
       <div class="tutor">
          <img src="images/pic-2.jpg" alt="">
          <div>
-            <h3>john deo</h3>
-            <span>developer</span>
+            <h3>Quách Quang</h3>
+            <span>Giảng viên Toán học</span>
          </div>
       </div>
       <form action="" method="post" class="flex">
-         <a href="playlist.html" class="inline-btn">view playlist</a>
-         <button><i class="far fa-heart"></i><span>like</span></button>
+         <a href="playlist.html" class="inline-btn">Xem khóa học</a>
+         <button><i class="far fa-heart"></i><span>Thích</span></button>
       </form>
-      <p class="description">
-         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque labore ratione, hic exercitationem mollitia obcaecati culpa dolor placeat provident porro.
-         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid iure autem non fugit sint. A, sequi rerum architecto dolor fugiat illo, iure velit nihil laboriosam cupiditate voluptatum facere cumque nemo!
-      </p>
    </div>
 
 </section>
 
 <section class="comments">
 
-   <h1 class="heading">5 comments</h1>
+   <h1 class="heading">Bình luận</h1>
 
-   <form action="" class="add-comment">
-      <h3>add comments</h3>
-      <textarea name="comment_box" placeholder="enter your comment" required maxlength="1000" cols="30" rows="10"></textarea>
-      <input type="submit" value="add comment" class="inline-btn" name="add_comment">
+   <form action="" method="post" class="add-comment">
+      <h3>Thêm bình luận</h3>
+      <textarea name="comment_box" placeholder="Nhập bình luận của bạn..." required maxlength="1000"></textarea>
+      <input type="submit" value="Gửi bình luận" name="add_comment" class="btn">
    </form>
 
-   <h1 class="heading">user comments</h1>
+   <h1 class="heading">Bình luận của học viên</h1>
 
-   <div class="box-container">
-
+   <div class="show-comments">
+      
       <div class="box">
-         <div class="user">
+         <div class="comment">
             <img src="images/pic-1.jpg" alt="">
             <div>
-               <h3>shaikh anas</h3>
-               <span>22-10-2022</span>
+               <h3>Nguyễn Văn A</h3>
+               <span>26-03-2025</span>
             </div>
          </div>
-         <div class="comment-box">this is a comment form shaikh anas</div>
-         <form action="" class="flex-btn">
-            <input type="submit" value="edit comment" name="edit_comment" class="inline-option-btn">
-            <input type="submit" value="delete comment" name="delete_comment" class="inline-delete-btn">
-         </form>
+         <p class="text">Bài giảng rất hay và dễ hiểu. Thầy giảng rất chi tiết và có nhiều ví dụ thực tế.</p>
       </div>
 
       <div class="box">
-         <div class="user">
+         <div class="comment">
             <img src="images/pic-2.jpg" alt="">
             <div>
-               <h3>john deo</h3>
-               <span>22-10-2022</span>
+               <h3>Trần Thị B</h3>
+               <span>26-03-2025</span>
             </div>
          </div>
-         <div class="comment-box">awesome tutorial!
-            keep going!</div>
+         <p class="text">Cảm ơn thầy đã chia sẻ những kiến thức bổ ích. Em đã hiểu rõ hơn về hàm số.</p>
       </div>
 
       <div class="box">
-         <div class="user">
+         <div class="comment">
             <img src="images/pic-3.jpg" alt="">
             <div>
-               <h3>john deo</h3>
-               <span>22-10-2022</span>
+               <h3>Lê Văn C</h3>
+               <span>26-03-2025</span>
             </div>
          </div>
-         <div class="comment-box">amazing way of teaching!
-            thank you so much!
-         </div>
-      </div>
-
-      <div class="box">
-         <div class="user">
-            <img src="images/pic-4.jpg" alt="">
-            <div>
-               <h3>john deo</h3>
-               <span>22-10-2022</span>
-            </div>
-         </div>
-         <div class="comment-box">loved it, thanks for the tutorial!</div>
-      </div>
-
-      <div class="box">
-         <div class="user">
-            <img src="images/pic-5.jpg" alt="">
-            <div>
-               <h3>john deo</h3>
-               <span>22-10-2022</span>
-            </div>
-         </div>
-         <div class="comment-box">this is what I have been looking for! thank you so much!</div>
-      </div>
-
-      <div class="box">
-         <div class="user">
-            <img src="images/pic-2.jpg" alt="">
-            <div>
-               <h3>john deo</h3>
-               <span>22-10-2022</span>
-            </div>
-         </div>
-         <div class="comment-box">thanks for the tutorial!
-
-            how to download source code file?
-         </div>
+         <p class="text">Bài giảng rất hữu ích cho việc ôn thi. Em sẽ tiếp tục theo dõi các bài giảng tiếp theo.</p>
       </div>
 
    </div>
 
 </section>
 
-<footer class="footer" style="font-size: 14px; margin: 0; padding: 10px;">
-   <div class="footer-content" style="display: flex; justify-content: space-between;">
-      <div class="footer-left" style="text-align: left;">
-         <h3 style="font-size: 16px;">Liên hệ</h3>
-         <p><i class="fas fa-envelope"></i> 22022132@vnu.edu.vn</p>
-         <p><i class="fas fa-phone"></i> +84 986 686 461</p>
-      </div>
-      
-      <div class="footer-right">
-         <h3 style="font-size: 16px;">Theo dõi</h3>
-         <div class="social-links">
-            <a href="#" style="color: var(--black);"><i class="fab fa-facebook"></i></a>
-            <a href="#" style="color: var(--black);"><i class="fab fa-youtube"></i></a>
-         </div>
-      </div>
-   </div>
-   
-   <div class="footer-bottom">
-      <p>&copy; 2025 Học trực tuyến</p>
-   </div>
-</footer>
+<footer></footer>
 
 <!-- custom js file link  -->
 <script src="js/script.js"></script>
-   
+<script src="js/footer.js"></script>
+
 </body>
 </html>

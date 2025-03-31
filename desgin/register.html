@@ -15,38 +15,38 @@
 </head>
 <body>
 
-<header class="header" style="margin: 0; padding: 10px;">
+   <header class="header" style="margin: 0; padding: 10px;">
    
-   <section class="flex">
-
-      <a href="home.html" class="logo"> <img src="\images\logo.jpg" alt="" width="60" height="60"> </a>
-
-      <form action="search.html" method="post" class="search-form">
-         <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
-         <button type="submit" class="fas fa-search"></button>
-      </form>
-
-      <div class="icons">
-         <div id="menu-btn" class="fas fa-bars"></div>
-         <div id="search-btn" class="fas fa-search"></div>
-         <div id="user-btn" class="fas fa-user"></div>
-         <div id="toggle-btn" class="fas fa-sun"></div>
-      </div>
-
-      <div class="profile">
-         <img src="images/pic-1.jpg" class="image" alt="">
-         <h3 class="name">shaikh anas</h3>
-         <p class="role">studen</p>
-         <a href="profile.html" class="btn">view profile</a>
-         <div class="flex-btn">
-            <a href="login.html" class="option-btn">login</a>
-            <a href="register.html" class="option-btn">register</a>
+      <section class="flex">
+   
+         <a href="home.html" class="logo"> <img src="\images\logo.jpg" alt="" width="60" height="60"> </a>
+   
+         <form action="search.html" method="post" class="search-form">
+            <input type="text" name="search_box" required placeholder="Tìm kiếm khóa học tại đây..." maxlength="100">
+            <button type="submit" class="fas fa-search"></button>
+         </form>
+   
+         <div class="icons">
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <div id="search-btn" class="fas fa-search"></div>
+            <div id="user-btn" class="fas fa-user"></div>
+            <div id="toggle-btn" class="fas fa-sun"></div>
          </div>
-      </div>
-
-   </section>
-
-</header>   
+   
+         <div class="profile" style="font-size: 14px;">
+            <img src="images/pic-1.jpg" class="image" alt="Ảnh đại diện">
+            <h3 class="name">Quách Quang</h3>
+            <p class="role">Học viên</p>
+            <a href="profile.html" class="btn">Xem thông tin</a>
+            <div class="flex-btn">
+               <a href="login.html" class="option-btn">Đăng nhập</a>
+               <a href="register.html" class="option-btn">Đăng ký</a>
+            </div>
+         </div>
+   
+      </section>
+   
+   </header>   
 
 <div class="side-bar">
 
@@ -74,47 +74,27 @@
 <section class="form-container">
 
    <form action="" method="post" enctype="multipart/form-data">
-      <h3>register now</h3>
-      <p>your name <span>*</span></p>
-      <input type="text" name="name" placeholder="enter your name" required maxlength="50" class="box">
-      <p>your email <span>*</span></p>
-      <input type="email" name="email" placeholder="enter your email" required maxlength="50" class="box">
-      <p>your password <span>*</span></p>
-      <input type="password" name="pass" placeholder="enter your password" required maxlength="20" class="box">
-      <p>confirm password <span>*</span></p>
-      <input type="password" name="c_pass" placeholder="confirm your password" required maxlength="20" class="box">
-      <p>select profile <span>*</span></p>
+      <h3>Đăng ký tài khoản</h3>
+      <p>Họ và tên <span>*</span></p>
+      <input type="text" name="name" placeholder="Nhập họ và tên của bạn" required maxlength="50" class="box">
+      <p>Email <span>*</span></p>
+      <input type="email" name="email" placeholder="Nhập email của bạn" required maxlength="50" class="box">
+      <p>Mật khẩu <span>*</span></p>
+      <input type="password" name="pass" placeholder="Nhập mật khẩu" required maxlength="20" class="box">
+      <p>Xác nhận mật khẩu <span>*</span></p>
+      <input type="password" name="c_pass" placeholder="Xác nhận mật khẩu" required maxlength="20" class="box">
+      <p>Ảnh đại diện <span>*</span></p>
       <input type="file" accept="image/*" required class="box">
-      <input type="submit" value="register new" name="submit" class="btn">
+      <input type="submit" value="Đăng ký" name="submit" class="btn">
    </form>
 
 </section>
 
-<footer class="footer" style="font-size: 14px; margin: 0; padding: 10px;">
-   <div class="footer-content" style="display: flex; justify-content: space-between;">
-      <div class="footer-left" style="text-align: left;">
-         <h3 style="font-size: 16px;">Liên hệ</h3>
-         <p><i class="fas fa-envelope"></i> 22022132@vnu.edu.vn</p>
-         <p><i class="fas fa-phone"></i> +84 986 686 461</p>
-      </div>
-      
-      <div class="footer-right">
-         <h3 style="font-size: 16px;">Theo dõi</h3>
-         <div class="social-links">
-            <a href="#" style="color: var(--black);"><i class="fab fa-facebook"></i></a>
-            <a href="#" style="color: var(--black);"><i class="fab fa-youtube"></i></a>
-         </div>
-      </div>
-   </div>
-   
-   <div class="footer-bottom">
-      <p>&copy; 2025 Học trực tuyến</p>
-   </div>
-</footer>
+<footer></footer>
 
 <!-- custom js file link  -->
 <script src="js/script.js"></script>
+<script src="js/footer.js"></script>
 
-   
 </body>
 </html>
