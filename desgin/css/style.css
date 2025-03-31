@@ -45,6 +45,7 @@ html::-webkit-scrollbar-thumb{
 body{
    background-color: var(--light-bg);
    padding-left: 30rem;
+   transition: padding-left .2s linear;
 }
 
 body.dark{
@@ -251,6 +252,11 @@ section{
    height: 100vh;
    border-right: var(--border);
    z-index: 1200;
+   transition: left .2s linear;
+}
+
+.side-bar.active{
+   left: -30rem;
 }
 
 .side-bar #close-btn{
@@ -324,10 +330,6 @@ section{
 
 .side-bar .navbar a:hover i{
    margin-right: 2.5rem;
-}
-
-.side-bar.active{
-   left: -30rem;
 }
 
 .home-grid .box-container{
@@ -1294,22 +1296,37 @@ section{
 .section-container {
    background: linear-gradient(135deg, var(--main-color), var(--secondary-color));
    padding: 4rem 2rem;
-   color: #fff;
+   color: var(--black);
    border-radius: 10px;
-   margin: 2rem;
+   margin: 2rem auto;
    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+   transition: all .2s linear;
+   width: calc(100% - 4rem);
+   max-width: 1200px;
+}
+
+body.active .section-container {
+   margin: 2rem auto;
+   border-radius: 10px;
+   width: calc(100% - 4rem);
+   max-width: 1200px;
 }
 
 .hero-content {
-   max-width: 1200px;
    margin: 0 auto;
    text-align: center;
+   transition: max-width .2s linear;
+}
+
+body.active .hero-content {
+   max-width: 100%;
 }
 
 .hero-content h2 {
    font-size: 2.5rem;
    margin-bottom: 1.5rem;
    font-weight: 700;
+   color: var(--black);
 }
 
 .hero-description {
@@ -1317,6 +1334,7 @@ section{
    margin-bottom: 3rem;
    line-height: 1.6;
    opacity: 0.9;
+   color: var(--black);
 }
 
 .section-features {
@@ -1343,18 +1361,20 @@ section{
 .feature-item i {
    font-size: 2rem;
    margin-right: 1rem;
-   color: var(--accent-color);
+   color: var(--black);
 }
 
 .feature-content h3 {
    font-size: 1.2rem;
    margin-bottom: 0.5rem;
    font-weight: 600;
+   color: var(--black);
 }
 
 .feature-content p {
    font-size: 0.9rem;
    opacity: 0.8;
+   color: var(--black);
 }
 
 .hero-buttons {
@@ -1369,17 +1389,18 @@ section{
    border-radius: 5px;
    font-weight: 600;
    transition: all 0.3s ease;
+   color: var(--black);
 }
 
 .register-btn {
    background: var(--accent-color);
-   color: #fff;
+   color: var(--black);
 }
 
 .explore-btn {
    background: transparent;
-   border: 2px solid #fff;
-   color: #fff;
+   border: 2px solid var(--black);
+   color: var(--black);
 }
 
 .register-btn:hover {
@@ -1395,6 +1416,10 @@ section{
 @media (max-width: 768px) {
    .section-container {
       padding: 2rem 1rem;
+      margin: 1rem;
+   }
+   
+   body.active .section-container {
       margin: 1rem;
    }
 
@@ -1417,4 +1442,19 @@ section{
    .register-btn, .explore-btn {
       width: 100%;
    }
+}
+
+/* Sửa lại CSS cho việc dịch chuyển nội dung khi sidebar mở */
+.side-bar.active + .content {
+    margin-left: 0;
+}
+
+/* Điều chỉnh responsive */
+@media (max-width: 1200px) {
+    body.active {
+        padding-left: 0;
+    }
+    .side-bar.active + .content {
+        margin-left: 0;
+    }
 }
