@@ -1,31 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>login</title>
-
-   <!-- font awesome cdn link  -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-
-   <!-- custom css file link  -->
+   <title>Đăng nhập - Học trực tuyến</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
    <link rel="stylesheet" href="css/style.css">
-
+   <link rel="stylesheet" href="css/effects.css">
 </head>
 <body>
 
 <header></header>
 
 <div class="side-bar">
-
    <div id="close-btn">
       <i class="fas fa-times"></i>
    </div>
 
    <div class="profile">
-      <img src="images/pic-1.jpg" class="image" alt="">
-      <h3 class="name">Quang Quách</h3>
+      <img src="images/pic-1.jpg" class="image" alt="Ảnh đại diện">
+      <h3 class="name">Quách Quang</h3>
       <p class="role">Học viên</p>
       <a href="profile.html" class="btn">Xem thông tin</a>
    </div>
@@ -37,28 +32,199 @@
       <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>Giáo viên</span></a>
       <a href="contact.html"><i class="fas fa-headset"></i><span>Liên hệ</span></a>
    </nav>
-
 </div>
 
 <section class="form-container">
-
-   <form action="" method="post">
+   <form action="" method="post" class="login-form">
       <h3>Đăng nhập</h3>
-      <p>Email <span>*</span></p>
-      <input type="email" name="email" placeholder="Nhập email của bạn" required maxlength="50" class="box">
-      <p>Mật khẩu <span>*</span></p>
-      <input type="password" name="pass" placeholder="Nhập mật khẩu" required maxlength="20" class="box">
-      <input type="submit" value="Đăng nhập" name="submit" class="btn">
-   </form>
+      
+      <div class="form-group">
+         <p>Email <span>*</span></p>
+         <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" name="email" placeholder="Nhập email của bạn" required maxlength="50" class="box">
+         </div>
+      </div>
 
+      <div class="form-group">
+         <p>Mật khẩu <span>*</span></p>
+         <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="pass" placeholder="Nhập mật khẩu" required maxlength="20" class="box">
+            <i class="fas fa-eye-slash toggle-password"></i>
+         </div>
+      </div>
+
+      <input type="submit" value="Đăng nhập" name="submit" class="btn">
+      
+      <div class="social-login">
+         <p>Hoặc</p>
+         <button type="button" class="btn google-btn" onclick="handleGoogleSignIn()">
+            <i class="fab fa-google"></i>
+            Đăng nhập với Google
+         </button>
+      </div>
+
+      <div class="register-section">
+         <p>Chưa có tài khoản?</p>
+         <button type="button" class="btn register-btn" onclick="window.location.href='register.html'">
+            Đăng ký ngay
+         </button>
+      </div>
+   </form>
 </section>
 
 <footer></footer>
 
-<!-- custom js file link  -->
 <script src="js/script.js"></script>
-<script src="js/footer.js"></script>
 <script src="js/header.js"></script>
+<script src="js/footer.js"></script>
+<script src="js/effects.js"></script>
+<style>
+.forgot-password-btn {
+   background: none;
+   border: none;
+   color: var(--main-color);
+   font-size: 1.4rem;
+   cursor: pointer;
+   padding: 0;
+   text-decoration: underline;
+   transition: all 0.3s ease;
+}
+
+.forgot-password-btn:hover {
+   color: var(--black);
+}
+
+.social-btn {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 1rem;
+   padding: 1rem 2rem;
+   border: 1px solid #ddd;
+   border-radius: 0.5rem;
+   font-size: 1.6rem;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   width: 100%;
+   max-width: 300px;
+   margin: 0 auto;
+   background-color: #fff;
+   color: #757575;
+}
+
+.social-btn:hover {
+   background-color: #f5f5f5;
+   border-color: #ccc;
+}
+
+.social-buttons {
+   margin-top: 1rem;
+}
+
+.social-login {
+   margin-top: 2rem;
+   text-align: center;
+}
+
+.social-login p {
+   color: #666;
+   margin-bottom: 1rem;
+   font-size: 1.4rem;
+}
+
+.google-btn {
+   background: #fff !important;
+   color: #666 !important;
+   border: 2px solid #ddd !important;
+   display: flex !important;
+   align-items: center;
+   justify-content: center;
+   gap: 1rem;
+   width: 100%;
+}
+
+.google-btn:hover {
+   background: #f5f5f5 !important;
+   border-color: #ccc !important;
+}
+
+.google-btn i {
+   font-size: 1.8rem;
+   color: #4285f4;
+}
+
+.register-section {
+   margin-top: 2rem;
+   text-align: center;
+}
+
+.register-section p {
+   color: #666;
+   margin-bottom: 1rem;
+   font-size: 1.4rem;
+}
+
+.register-btn {
+   background: var(--main-color) !important;
+   color: #fff !important;
+   border: none !important;
+   width: 100%;
+   padding: 1.2rem !important;
+   font-size: 1.6rem !important;
+   transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+   opacity: 0.9;
+   transform: translateY(-2px);
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+   // Toggle password visibility
+   const togglePassword = document.querySelector('.toggle-password');
+   const passwordField = document.querySelector('input[name="pass"]');
+   
+   togglePassword.addEventListener('click', function() {
+      const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordField.setAttribute('type', type);
+      this.classList.toggle('fa-eye');
+      this.classList.toggle('fa-eye-slash');
+   });
+
+   // Form validation cho đăng nhập thông thường
+   const form = document.querySelector('.login-form');
+   form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const email = form.querySelector('input[name="email"]').value;
+      const password = form.querySelector('input[name="pass"]').value;
+      
+      if (!email || !password) {
+         showToast('Vui lòng điền đầy đủ thông tin!', 'error');
+         return;
+      }
+      
+      showToast('Đang xử lý đăng nhập...', 'info');
+      
+      setTimeout(() => {
+         showToast('Đăng nhập thành công!', 'success');
+         window.location.href = 'home.html';
+      }, 1500);
+   });
+});
+
+function handleGoogleSignIn() {
+   showToast('Đang xử lý đăng nhập với Google...', 'info');
+   setTimeout(() => {
+      showToast('Đăng nhập thành công!', 'success');
+      window.location.href = 'home.html';
+   }, 1500);
+}
+</script>
 
 </body>
 </html>

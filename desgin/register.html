@@ -1,31 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>register</title>
-
-   <!-- font awesome cdn link  -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-
-   <!-- custom css file link  -->
+   <title>Đăng ký - Học trực tuyến</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
    <link rel="stylesheet" href="css/style.css">
-
+   <link rel="stylesheet" href="css/effects.css">
 </head>
 <body>
 
 <header></header>
 
 <div class="side-bar">
-
    <div id="close-btn">
       <i class="fas fa-times"></i>
    </div>
 
    <div class="profile">
-      <img src="images/pic-1.jpg" class="image" alt="">
-      <h3 class="name">Quang Quách</h3>
+      <img src="images/pic-1.jpg" class="image" alt="Ảnh đại diện">
+      <h3 class="name">Quách Quang</h3>
       <p class="role">Học viên</p>
       <a href="profile.html" class="btn">Xem thông tin</a>
    </div>
@@ -37,34 +32,305 @@
       <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>Giáo viên</span></a>
       <a href="contact.html"><i class="fas fa-headset"></i><span>Liên hệ</span></a>
    </nav>
-
 </div>
 
 <section class="form-container">
-
-   <form action="" method="post" enctype="multipart/form-data">
+   <form action="" method="post" enctype="multipart/form-data" class="register-form">
       <h3>Đăng ký tài khoản</h3>
-      <p>Họ và tên <span>*</span></p>
-      <input type="text" name="name" placeholder="Nhập họ và tên của bạn" required maxlength="50" class="box">
-      <p>Email <span>*</span></p>
-      <input type="email" name="email" placeholder="Nhập email của bạn" required maxlength="50" class="box">
-      <p>Mật khẩu <span>*</span></p>
-      <input type="password" name="pass" placeholder="Nhập mật khẩu" required maxlength="20" class="box">
-      <p>Xác nhận mật khẩu <span>*</span></p>
-      <input type="password" name="c_pass" placeholder="Xác nhận mật khẩu" required maxlength="20" class="box">
-      <p>Ảnh đại diện <span>*</span></p>
-      <input type="file" accept="image/*" required class="box">
-      <input type="submit" value="Đăng ký" name="submit" class="btn">
-   </form>
+      
+      <div class="form-group">
+         <p>Họ và tên <span>*</span></p>
+         <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" name="name" placeholder="Nhập họ và tên của bạn" required maxlength="50" class="box">
+         </div>
+      </div>
 
+      <div class="form-group">
+         <p>Email <span>*</span></p>
+         <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" name="email" placeholder="Nhập email của bạn" required maxlength="50" class="box">
+         </div>
+      </div>
+
+      <div class="form-group">
+         <p>Số điện thoại <span>*</span></p>
+         <div class="input-group">
+            <i class="fas fa-phone"></i>
+            <input type="tel" name="phone" placeholder="Nhập số điện thoại" required maxlength="10" class="box">
+         </div>
+      </div>
+
+      <div class="form-group">
+         <p>Mật khẩu <span>*</span></p>
+         <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="pass" placeholder="Nhập mật khẩu" required maxlength="20" class="box">
+            <i class="fas fa-eye-slash toggle-password"></i>
+         </div>
+         <div class="password-strength">
+            <div class="strength-bar"></div>
+            <p class="strength-text">Độ mạnh mật khẩu: <span>Yếu</span></p>
+         </div>
+      </div>
+
+      <div class="form-group">
+         <p>Xác nhận mật khẩu <span>*</span></p>
+         <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="c_pass" placeholder="Xác nhận mật khẩu" required maxlength="20" class="box">
+            <i class="fas fa-eye-slash toggle-password"></i>
+         </div>
+      </div>
+
+      <div class="form-group">
+         <p>Ảnh đại diện <span>*</span></p>
+         <div class="input-group">
+            <i class="fas fa-image"></i>
+            <input type="file" name="image" accept="image/*" required class="box" id="image-upload" style="padding-top: 0.8rem;">
+         </div>
+         <div class="image-preview" id="imagePreview">
+            <img src="#" alt="Preview" class="preview-img" style="display: none;">
+            <span class="preview-text">Chưa có ảnh được chọn</span>
+         </div>
+      </div>
+
+      <input type="submit" value="Đăng ký" name="submit" class="btn">
+      
+      <div class="social-register">
+         <p>Hoặc</p>
+         <button type="button" class="btn google-btn" onclick="handleGoogleSignIn()">
+            <i class="fab fa-google"></i>
+            Đăng ký ngay với Google
+         </button>
+      </div>
+
+      <div class="login-section">
+         <p>Đã có tài khoản?</p>
+         <button type="button" class="btn login-btn" onclick="window.location.href='login.html'">
+            Đăng nhập
+         </button>
+      </div>
+   </form>
 </section>
 
 <footer></footer>
 
-<!-- custom js file link  -->
 <script src="js/script.js"></script>
-<script src="js/footer.js"></script>
 <script src="js/header.js"></script>
+<script src="js/footer.js"></script>
+<script src="js/effects.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+   // Toggle password visibility
+   const togglePasswords = document.querySelectorAll('.toggle-password');
+   togglePasswords.forEach(toggle => {
+      toggle.addEventListener('click', function() {
+         const input = this.previousElementSibling;
+         const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+         input.setAttribute('type', type);
+         this.classList.toggle('fa-eye');
+         this.classList.toggle('fa-eye-slash');
+      });
+   });
+
+   // Password strength checker
+   const passwordInput = document.querySelector('input[name="pass"]');
+   const strengthBar = document.querySelector('.strength-bar');
+   const strengthText = document.querySelector('.strength-text span');
+
+   passwordInput.addEventListener('input', function() {
+      const password = this.value;
+      let strength = 0;
+      
+      if (password.length >= 8) strength += 25;
+      if (password.match(/[a-z]/) && password.match(/[A-Z]/)) strength += 25;
+      if (password.match(/\d/)) strength += 25;
+      if (password.match(/[^a-zA-Z\d]/)) strength += 25;
+
+      strengthBar.style.width = strength + '%';
+      
+      if (strength <= 25) {
+         strengthBar.style.backgroundColor = '#ff4444';
+         strengthText.textContent = 'Yếu';
+      } else if (strength <= 50) {
+         strengthBar.style.backgroundColor = '#ffbb33';
+         strengthText.textContent = 'Trung bình';
+      } else if (strength <= 75) {
+         strengthBar.style.backgroundColor = '#00C851';
+         strengthText.textContent = 'Mạnh';
+      } else {
+         strengthBar.style.backgroundColor = '#007E33';
+         strengthText.textContent = 'Rất mạnh';
+      }
+   });
+
+   // Image preview
+   const imageUpload = document.getElementById('image-upload');
+   const previewContainer = document.getElementById('imagePreview');
+   const previewImage = previewContainer.querySelector('.preview-img');
+   const previewText = previewContainer.querySelector('.preview-text');
+
+   imageUpload.addEventListener('change', function(e) {
+      const file = this.files[0];
+      
+      if (file) {
+         const reader = new FileReader();
+         
+         reader.onload = function(e) {
+            previewImage.style.display = 'block';
+            previewImage.src = e.target.result;
+            previewText.style.display = 'none';
+            imageUpload.setAttribute('title', file.name);
+         }
+         
+         reader.readAsDataURL(file);
+      } else {
+         previewImage.style.display = 'none';
+         previewImage.src = '#';
+         previewText.style.display = 'block';
+         imageUpload.setAttribute('title', '');
+      }
+   });
+
+   // Form validation
+   const form = document.querySelector('.register-form');
+   form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const password = form.querySelector('input[name="pass"]').value;
+      const confirmPassword = form.querySelector('input[name="c_pass"]').value;
+      
+      if (password !== confirmPassword) {
+         showToast('Mật khẩu xác nhận không khớp!', 'error');
+         return;
+      }
+      
+      // Here you would typically send the data to your server
+      showToast('Đang xử lý đăng ký...', 'info');
+      
+      // Simulate API call
+      setTimeout(() => {
+         showToast('Đăng ký thành công!', 'success');
+         window.location.href = 'login.html';
+      }, 1500);
+   });
+});
+
+function handleGoogleSignIn() {
+   showToast('Đang xử lý đăng ký với Google...', 'info');
+   setTimeout(() => {
+      showToast('Đăng ký thành công!', 'success');
+      window.location.href = 'home.html';
+   }, 1500);
+}
+</script>
+
+<style>
+.image-preview {
+   margin-top: 1rem;
+   padding: 1rem;
+   border: 2px dashed #ddd;
+   border-radius: 0.5rem;
+   min-height: 150px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   gap: 1rem;
+}
+
+.preview-img {
+   max-width: 100%;
+   max-height: 150px;
+   border-radius: 0.5rem;
+}
+
+.preview-text {
+   color: #666;
+   font-size: 1.4rem;
+}
+
+input[type="file"] {
+   cursor: pointer;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+   visibility: hidden;
+   display: none;
+}
+
+input[type="file"]::before {
+   content: 'Chọn ảnh';
+   display: inline-block;
+   background: transparent;
+   outline: none;
+   white-space: nowrap;
+   cursor: pointer;
+   font-weight: 500;
+   font-size: 1.6rem;
+   color: #666;
+}
+
+.input-group input[type="file"] {
+   padding-left: 4.5rem;
+}
+
+.social-register {
+   margin-top: 2rem;
+   text-align: center;
+}
+
+.social-register p {
+   color: #666;
+   margin-bottom: 1rem;
+   font-size: 1.4rem;
+}
+
+.google-btn {
+   background: #fff !important;
+   color: #666 !important;
+   border: 2px solid #ddd !important;
+   display: flex !important;
+   align-items: center;
+   justify-content: center;
+   gap: 1rem;
+   width: 100%;
+}
+
+.google-btn:hover {
+   background: #f5f5f5 !important;
+   border-color: #ccc !important;
+}
+
+.google-btn i {
+   font-size: 1.8rem;
+   color: #4285f4;
+}
+
+.login-section {
+   margin-top: 2rem;
+   text-align: center;
+}
+
+.login-section p {
+   color: #666;
+   margin-bottom: 1rem;
+   font-size: 1.4rem;
+}
+
+.login-btn {
+   background: var(--main-color) !important;
+   color: #fff !important;
+   width: 100%;
+}
+
+.login-btn:hover {
+   opacity: 0.9;
+   transform: translateY(-2px);
+}
+</style>
 
 </body>
 </html>
