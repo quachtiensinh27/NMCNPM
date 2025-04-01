@@ -1950,4 +1950,114 @@
 
 .dark-mode .file-label:hover {
    opacity: 1;
+}
+
+/* Hiệu ứng nổi lên và ripple cho tất cả các nút */
+.hover-lift-effect {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: center;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.hover-lift-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--light-purple), var(--purple));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.hover-lift-effect::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.5s ease;
+    z-index: -1;
+}
+
+.hover-lift-parent:hover .hover-lift-effect {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.hover-lift-effect:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+    color: white;
+}
+
+.hover-lift-effect:hover::before {
+    opacity: 1;
+}
+
+.hover-lift-effect:hover::after {
+    transform: scale(10);
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+/* Hiệu ứng ripple khi click */
+.ripple-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple-effect .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    animation: ripple-animation 0.8s ease-out;
+    transform: scale(0);
+    pointer-events: none;
+}
+
+@keyframes ripple-animation {
+    0% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* Hiệu ứng phát hiện ý định hover */
+.hover-intent {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Áp dụng hiệu ứng cho tất cả các nút cần thiết */
+.inline-btn,
+.inline-option-btn,
+.discover-btn,
+.btn,
+.more-btn a,
+.register-btn,
+.courses .box .inline-option-btn {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Giữ lại các class hiện có để tương thích ngược */
+.content .inline-btn {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: center;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 1;
 } 
