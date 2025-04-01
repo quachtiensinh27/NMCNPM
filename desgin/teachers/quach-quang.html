@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Thầy Quách Quang - Học viện Quách Quang</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+   <link rel="stylesheet" href="../css/style.css">
+   <link rel="stylesheet" href="../css/effects.css">
+
+   <style>
+   body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding-left: 30rem;
+   }
+
+   main {
+      flex: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+   }
+
+   .teacher-profile {
+      padding: 2rem;
+      animation: fadeIn 0.5s ease-in;
+   }
+
+   .teacher-profile .top-section {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+   }
+
+   .teacher-profile .image {
+      width: 300px;
+      height: 300px;
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 5px solid var(--main-color);
+   }
+
+   .teacher-profile .image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+   }
+
+   .teacher-profile .info {
+      padding: 2rem 0;
+   }
+
+   .teacher-profile .name {
+      font-size: 3rem;
+      color: var(--black);
+      margin-bottom: 1rem;
+   }
+
+   .teacher-profile .role {
+      font-size: 1.8rem;
+      color: var(--main-color);
+      margin-bottom: 2rem;
+   }
+
+   .teacher-profile .stats {
+      display: flex;
+      gap: 3rem;
+      margin-bottom: 2rem;
+   }
+
+   .teacher-profile .stat {
+      text-align: center;
+   }
+
+   .teacher-profile .stat span {
+      display: block;
+      font-size: 2.5rem;
+      color: var(--black);
+      margin-bottom: .5rem;
+   }
+
+   .teacher-profile .stat p {
+      font-size: 1.4rem;
+      color: var(--light-color);
+   }
+
+   .teacher-profile .bio {
+      font-size: 1.6rem;
+      line-height: 2;
+      color: var(--light-color);
+   }
+
+   .teacher-profile .courses-section {
+      margin-top: 4rem;
+   }
+
+   .teacher-profile .courses-section h2 {
+      font-size: 2.5rem;
+      color: var(--black);
+      margin-bottom: 2rem;
+   }
+
+   .teacher-profile .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+   }
+
+   .teacher-profile .course {
+      background: var(--white);
+      border-radius: 1rem;
+      padding: 2rem;
+      transition: all 0.3s ease;
+   }
+
+   .teacher-profile .course:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+   }
+
+   .teacher-profile .course h3 {
+      font-size: 2rem;
+      color: var(--black);
+      margin-bottom: 1rem;
+   }
+
+   .teacher-profile .course p {
+      font-size: 1.5rem;
+      color: var(--light-color);
+      line-height: 2;
+      margin-bottom: 1.5rem;
+   }
+
+   @media (max-width: 991px) {
+      body {
+         padding-left: 0;
+      }
+
+      .teacher-profile .top-section {
+         grid-template-columns: 1fr;
+         text-align: center;
+      }
+
+      .teacher-profile .image {
+         margin: 0 auto;
+      }
+
+      .teacher-profile .stats {
+         justify-content: center;
+      }
+   }
+   </style>
+</head>
+<body>
+
+<header></header>
+
+<div class="side-bar">
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+
+   <div class="profile">
+      <img src="../images/pic-1.jpg" class="image" alt="">
+      <h3 class="name">Quang Quách</h3>
+      <p class="role">Học viên</p>
+      <a href="../profile.html" class="btn">Xem thông tin</a>
+   </div>
+
+   <nav class="navbar">
+      <a href="../home.html"><i class="fas fa-home"></i><span>Trang chủ</span></a>
+      <a href="../about.html"><i class="fas fa-question"></i><span>Về chúng tôi</span></a>
+      <a href="../courses.html"><i class="fas fa-graduation-cap"></i><span>Khóa học</span></a>
+      <a href="../teachers.html" class="active"><i class="fas fa-chalkboard-user"></i><span>Giáo viên</span></a>
+      <a href="../contact.html"><i class="fas fa-headset"></i><span>Liên hệ</span></a>
+   </nav>
+</div>
+
+<main>
+   <section class="teacher-profile">
+      <div class="top-section">
+         <div class="image">
+            <img src="../images/pic-2.jpg" alt="Thầy Quách Quang">
+         </div>
+         <div class="info">
+            <h1 class="name">Quách Quang</h1>
+            <p class="role">Giáo viên Toán | Giám đốc Học viện</p>
+            <div class="stats">
+               <div class="stat">
+                  <span>30</span>
+                  <p>Năm kinh nghiệm</p>
+               </div>
+               <div class="stat">
+                  <span>2000+</span>
+                  <p>Học viên</p>
+               </div>
+               <div class="stat">
+                  <span>10</span>
+                  <p>Khóa học</p>
+               </div>
+            </div>
+            <div class="bio">
+               <p>Thầy Quách Quang là một nhà giáo xuất sắc với 30 năm kinh nghiệm giảng dạy toán học. Với tâm huyết và sự nhiệt tình, thầy đã giúp hàng nghìn học viên đạt kết quả cao trong các kỳ thi quan trọng.</p>
+               <p>Là người sáng lập và giám đốc của Học viện Quách Quang, thầy luôn mong muốn xây dựng một môi trường học tập chất lượng, nơi học viên được phát triển toàn diện.</p>
+            </div>
+         </div>
+      </div>
+
+      <div class="courses-section">
+         <h2>Khóa học đang giảng dạy</h2>
+         <div class="courses-grid">
+            <div class="course">
+               <h3>Toán THPT Quốc gia</h3>
+               <p>Khóa học tổng hợp kiến thức trọng tâm, kỹ năng làm bài và phương pháp giải nhanh cho kỳ thi THPT Quốc gia.</p>
+               <a href="../courses.html" class="inline-btn">Xem chi tiết</a>
+            </div>
+            <div class="course">
+               <h3>Toán nâng cao lớp 12</h3>
+               <p>Chương trình học chuyên sâu dành cho học sinh muốn đạt điểm cao và thi vào các trường top đầu.</p>
+               <a href="../courses.html" class="inline-btn">Xem chi tiết</a>
+            </div>
+         </div>
+      </div>
+   </section>
+</main>
+
+<footer></footer>
+
+<script src="../js/script.js"></script>
+<script src="../js/footer.js"></script>
+<script src="../js/header.js"></script>
+
+</body>
+</html> 

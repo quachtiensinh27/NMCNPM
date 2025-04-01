@@ -1,25 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>teachers</title>
-
-   <!-- font awesome cdn link  -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-
-   <!-- custom css file link  -->
+   <title>Đội ngũ giáo viên - Học viện Quách Quang</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
    <link rel="stylesheet" href="css/style.css">
    <link rel="stylesheet" href="css/effects.css">
 
+   <style>
+   body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding-left: 30rem;
+   }
+
+   .side-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 30rem;
+      background-color: var(--white);
+      border-right: var(--border);
+      z-index: 1000;
+   }
+
+   main {
+      flex: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+   }
+
+   .teachers-page {
+      padding: 2rem;
+      animation: fadeIn 0.5s ease-in;
+   }
+
+   .teachers-page .box-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+   }
+
+   .teachers-page .box {
+      background: var(--white);
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+   }
+
+   .teachers-page .box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+   }
+
+   .teachers-page .box .image {
+      position: relative;
+      height: 250px;
+      width: 250px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      overflow: hidden;
+      border: 5px solid var(--main-color);
+   }
+
+   .teachers-page .box .image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+   }
+
+   .teachers-page .box .name {
+      font-size: 2rem;
+      color: var(--black);
+      margin: 1rem 0;
+   }
+
+   .teachers-page .box .role {
+      font-size: 1.6rem;
+      color: var(--main-color);
+      margin-bottom: 1rem;
+   }
+
+   .teachers-page .box .stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1.5rem 0;
+   }
+
+   .teachers-page .box .stats .stat {
+      text-align: center;
+   }
+
+   .teachers-page .box .stats .stat span {
+      font-size: 2rem;
+      color: var(--black);
+   }
+
+   .teachers-page .box .stats .stat p {
+      font-size: 1.4rem;
+      color: var(--light-color);
+   }
+
+   .teachers-page .box .bio {
+      font-size: 1.5rem;
+      line-height: 2;
+      color: var(--light-color);
+      margin: 1.5rem 0;
+   }
+
+   .teachers-page .box .courses {
+      margin: 1.5rem 0;
+   }
+
+   .teachers-page .box .courses h4 {
+      font-size: 1.6rem;
+      color: var(--black);
+      margin-bottom: 1rem;
+   }
+
+   .teachers-page .box .courses p {
+      font-size: 1.4rem;
+      color: var(--light-color);
+   }
+
+   .teachers-page .box .social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+   }
+
+   .teachers-page .box .social a {
+      height: 4.5rem;
+      width: 4.5rem;
+      line-height: 4.5rem;
+      border-radius: 50%;
+      font-size: 2rem;
+      background: var(--light-bg);
+      color: var(--black);
+      transition: all 0.3s ease;
+   }
+
+   .teachers-page .box .social a:hover {
+      background: var(--main-color);
+      color: var(--white);
+      transform: rotate(360deg);
+   }
+
+   @media (max-width: 991px) {
+      body {
+         padding-left: 0;
+      }
+
+      .side-bar {
+         left: -30rem;
+         transition: 0.2s linear;
+      }
+
+      .side-bar.active {
+         left: 0;
+      }
+
+      main {
+         padding-left: 2rem;
+         padding-right: 2rem;
+      }
+   }
+   </style>
 </head>
 <body>
 
 <header></header>
 
 <div class="side-bar">
-
    <div id="close-btn">
       <i class="fas fa-times"></i>
    </div>
@@ -35,88 +197,137 @@
       <a href="home.html"><i class="fas fa-home"></i><span>Trang chủ</span></a>
       <a href="about.html"><i class="fas fa-question"></i><span>Về chúng tôi</span></a>
       <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>Khóa học</span></a>
-      <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>Giáo viên</span></a>
+      <a href="teachers.html" class="active"><i class="fas fa-chalkboard-user"></i><span>Giáo viên</span></a>
       <a href="contact.html"><i class="fas fa-headset"></i><span>Liên hệ</span></a>
    </nav>
-
 </div>
 
-<section class="teachers">
+<main>
+   <section class="teachers-page">
+      <h1 class="heading">Đội ngũ giáo viên</h1>
 
-   <h1 class="heading">Đội ngũ giảng viên</h1>
-
-   <form action="" method="post" class="search-tutor">
-      <input type="text" name="search_box" placeholder="Tìm kiếm giảng viên..." required maxlength="100">
-      <button type="submit" class="fas fa-search" name="search_tutor"></button>
-   </form>
-
-   <div class="box-container">
-
-      <div class="box offer">
-         <h3>Trở thành giảng viên</h3>
-         <p>Chia sẻ kiến thức và kinh nghiệm của bạn với cộng đồng học viên. Đăng ký ngay để trở thành giảng viên của chúng tôi.</p>
-         <a href="register.html" class="inline-btn">Đăng ký ngay</a>
-      </div>
-
-      <div class="box card">
-         <div class="tutor">
-            <img src="images/pic-2.jpg" alt="">
-            <div class="info">
-               <h3>Quách Quang</h3>
-               <span>Giảng viên Toán</span>
+      <div class="box-container">
+         <div class="box">
+            <div class="image">
+               <img src="images/pic-2.jpg" alt="Thầy Quách Quang">
             </div>
-         </div>
-         <p class="description">Thầy Quang có hơn 10 năm kinh nghiệm giảng dạy môn Toán. Phương pháp giảng dạy dễ hiểu, tận tâm với học viên.</p>
-         <a href="teacher_profile.html" class="inline-option-btn btn discover-btn">Xem thông tin</a>
-      </div>
-
-      <div class="box card">
-         <div class="tutor">
-            <img src="images/pic-3.jpg" alt="">
-            <div class="info">
-               <h3>Đoàn Mạnh</h3>
-               <span>Giảng viên Vật lý</span>
+            <h3 class="name">Quách Quang</h3>
+            <p class="role">Giáo viên Toán</p>
+            <div class="stats">
+               <div class="stat">
+                  <span>30</span>
+                  <p>Năm KN</p>
+               </div>
+               <div class="stat">
+                  <span>2000+</span>
+                  <p>Học viên</p>
+               </div>
+               <div class="stat">
+                  <span>10</span>
+                  <p>Khóa học</p>
+               </div>
             </div>
-         </div>
-         <p class="description">Thầy Mạnh là chuyên gia trong lĩnh vực Vật lý. Có nhiều năm kinh nghiệm luyện thi THPT Quốc gia.</p>
-         <a href="teacher_profile.html" class="inline-option-btn btn discover-btn">Xem thông tin</a>
-      </div>
-
-      <div class="box card">
-         <div class="tutor">
-            <img src="images/pic-4.jpg" alt="">
-            <div class="info">
-               <h3>Cậu Híu</h3>
-               <span>Giảng viên Tiếng Anh</span>
+            <p class="bio">Thạc sĩ Toán học với 30 năm kinh nghiệm giảng dạy. Giám đốc và giảng viên chính của Học viện.</p>
+            <div class="courses">
+               <h4>Khóa học đang dạy:</h4>
+               <p>- Toán THPT Quốc gia</p>
+               <p>- Toán nâng cao lớp 12</p>
             </div>
+            <a href="teachers/quach-quang.html" class="inline-btn">Xem thông tin</a>
          </div>
-         <p class="description">Cậu Híu có chứng chỉ IELTS 8.5. Phương pháp giảng dạy hiện đại, giúp học viên tự tin giao tiếp.</p>
-         <a href="teacher_profile.html" class="inline-option-btn btn discover-btn">Xem thông tin</a>
-      </div>
 
-      <div class="box card">
-         <div class="tutor">
-            <img src="images/pic-5.jpg" alt="">
-            <div class="info">
-               <h3>cậu Đặng</h3>
-               <span>Giảng viên Hóa học</span>
+         <div class="box">
+            <div class="image">
+               <img src="images/pic-3.jpg" alt="Thầy Đoàn Mạnh">
             </div>
+            <h3 class="name">Đoàn Mạnh</h3>
+            <p class="role">Giáo viên Vật lý</p>
+            <div class="stats">
+               <div class="stat">
+                  <span>15</span>
+                  <p>Năm KN</p>
+               </div>
+               <div class="stat">
+                  <span>1000+</span>
+                  <p>Học viên</p>
+               </div>
+               <div class="stat">
+                  <span>6</span>
+                  <p>Khóa học</p>
+               </div>
+            </div>
+            <p class="bio">Chuyên gia Vật lý với nhiều năm kinh nghiệm luyện thi THPT Quốc gia. Phương pháp giảng dạy dễ hiểu.</p>
+            <div class="courses">
+               <h4>Khóa học đang dạy:</h4>
+               <p>- Vật lý THPT Quốc gia</p>
+               <p>- Vật lý chuyên đề</p>
+            </div>
+            <a href="teachers/doan-manh.html" class="inline-btn">Xem thông tin</a>
          </div>
-         <p class="description">Thầy Đặng có nhiều năm kinh nghiệm giảng dạy Hóa học. Phương pháp giảng dạy khoa học, dễ hiểu.</p>
-         <a href="teacher_profile.html" class="inline-option-btn btn discover-btn">Xem thông tin</a>
+
+         <div class="box">
+            <div class="image">
+               <img src="images/pic-4.jpg" alt="Cậu Đặng">
+            </div>
+            <h3 class="name">Cậu Đặng</h3>
+            <p class="role">Giáo viên Hóa học</p>
+            <div class="stats">
+               <div class="stat">
+                  <span>12</span>
+                  <p>Năm KN</p>
+               </div>
+               <div class="stat">
+                  <span>800+</span>
+                  <p>Học viên</p>
+               </div>
+               <div class="stat">
+                  <span>5</span>
+                  <p>Khóa học</p>
+               </div>
+            </div>
+            <p class="bio">Giảng viên Hóa học với phương pháp giảng dạy khoa học, dễ hiểu. Chuyên gia về Hóa hữu cơ.</p>
+            <div class="courses">
+               <h4>Khóa học đang dạy:</h4>
+               <p>- Hóa học cơ bản</p>
+               <p>- Hóa học nâng cao</p>
+            </div>
+            <a href="teachers/cau-dang.html" class="inline-btn">Xem thông tin</a>
+         </div>
+
+         <div class="box">
+            <div class="image">
+               <img src="images/pic-5.jpg" alt="Cậu Híu">
+            </div>
+            <h3 class="name">Cậu Híu</h3>
+            <p class="role">Giáo viên Tiếng Anh</p>
+            <div class="stats">
+               <div class="stat">
+                  <span>8</span>
+                  <p>Năm KN</p>
+               </div>
+               <div class="stat">
+                  <span>600+</span>
+                  <p>Học viên</p>
+               </div>
+               <div class="stat">
+                  <span>4</span>
+                  <p>Khóa học</p>
+               </div>
+            </div>
+            <p class="bio">Chứng chỉ IELTS 8.5, chuyên gia tiếng Anh giao tiếp. Phương pháp giảng dạy hiện đại, sinh động.</p>
+            <div class="courses">
+               <h4>Khóa học đang dạy:</h4>
+               <p>- Tiếng Anh giao tiếp</p>
+               <p>- IELTS cơ bản</p>
+            </div>
+            <a href="teachers/cau-hiu.html" class="inline-btn">Xem thông tin</a>
+         </div>
       </div>
-
-   </div>
-
-   <div class="more-btn">
-      <a href="#" class="inline-option-btn btn discover-btn">Xem thêm</a>
-   </div>
-
-</section>
+   </section>
+</main>
 
 <footer></footer>
 
-<!-- custom js file link  -->
 <script src="js/script.js"></script>
 <script src="js/footer.js"></script>
 <script src="js/header.js"></script>
