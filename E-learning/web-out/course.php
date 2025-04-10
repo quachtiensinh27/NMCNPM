@@ -1,0 +1,153 @@
+<?php
+include '../web-in/components/connect.php';
+
+$select_playlists = $conn->prepare("SELECT * FROM `playlist` WHERE `status` = 'active' ORDER BY date DESC");
+$select_playlists->execute();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>course</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style-out.css">
+
+</head>
+<body>
+    
+<div class="container">
+
+<header>
+
+    <a href="#" class="logo">Quach<span>Edu.</span></a>
+
+    <div id="menu" class="fas fa-bars"></div>
+
+    <nav class="navbar">
+        <a href="home.html">Trang chủ</a>
+        <a href="course.html">Khóa học</a>
+        <a href="teacher.html">Giáo viên</a>
+        <a href="review.html">Đánh giá</a>
+        <a href="contact.html">Liên hệ</a>
+        <a href="login.php">Đăng nhập</a>
+    </nav>
+
+</header>
+
+<h1 class="heading"> Khóa học </h1>
+
+<!-- course section  -->
+
+<section class="course">
+    <?php
+    if ($select_playlists->rowCount() > 0) {
+        while ($fetch_playlist = $select_playlists->fetch(PDO::FETCH_ASSOC)) {
+            $course_id = $fetch_playlist['id'];
+
+            // Truy vấn thông tin giáo viên
+            $select_tutor = $conn->prepare("SELECT * FROM `tutors` WHERE id = ?");
+            $select_tutor->execute([$fetch_playlist['tutor_id']]);
+            $fetch_tutor = $select_tutor->fetch(PDO::FETCH_ASSOC);
+    ?>
+    <div class="box">
+        <span class="amount">2,000,000 vnđ</span>
+        <img src="../web-in/uploaded_files/<?= $fetch_playlist['thumb']; ?>" class="thumb" alt="Playlist Thumbnail">
+        <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+        </div>
+        <h3><?= $fetch_playlist['title']; ?></h3>
+        <p class="tutor-name">Giảng viên: <?= $fetch_tutor['name']; ?></p>
+        <p><?= $fetch_playlist['description']; ?></p>
+        <a href="playlist.php?get_id=<?= $course_id; ?>" class="btn">Xem thêm</a>
+        <div class="icons">
+            <p> <i class="far fa-clock"></i> 40 hours </p>
+            <p> <i class="far fa-calendar"></i> 6 months </p>
+            <p> <i class="fas fa-book"></i> 15 modules </p>
+        </div>
+    </div>
+    <?php
+        }
+    } else {
+        echo '<p class="empty">Không tìm thấy playlist nào!</p>';
+    }
+    ?>
+</section>
+
+
+<!-- footer section  -->
+
+<section class="footer">
+    <hr class="section-footer">
+    <div class="box-container">
+
+        <div class="box">
+            <h3>về chúng tôi</h3>
+            <p>trung tâm giáo dục QuachEdu.</p>
+        </div>
+
+        <div class="box">
+            <h3>liên kết</h3>
+            <a href="home.html">Trang chủ</a>
+            <a href="course.html">Khóa học</a>
+            <a href="teacher.html">Giáo viên</a>
+            <a href="review.html">Đánh giá</a>
+            <a href="contact.html">Liên hệ</a>
+            <a href="login.php">Đăng nhập</a>
+        </div>
+
+        <div class="box">
+            <h3>theo dõi</h3>
+            <a href="https://www.facebook.com/profile.php?id=61575079702285">facebook</a>
+            <a href="#">twitter</a>
+            <a href="#">instagram</a>
+            <a href="#">linkedin</a>
+        </div>
+
+        <div class="box">
+            <h3>liên hệ</h3>
+           <p> <i class="sđt"></i> 098-686-4461 </p>
+           <p> <i class="email"></i> quachEdu@gmail.com </p>
+           <p> <i class="địa chỉ"></i> Hanoi, Vietnam </p>
+        </div>
+
+    </div>
+
+    <div class="credit"> created by <span> team 2 </span> | all rights reserved </div>
+
+</section>
+<style>
+    .section-footer{
+        width: 100%;
+        margin: 2rem auto;
+        border: .1rem solid rgba(0,0,0,.1);
+    }
+</style>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- custom js file link -->
+<script src="js/script.js"></script>
+
+</body>
+</html>
