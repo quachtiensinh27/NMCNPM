@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Giảng viên Quách Quang - Học viện Quách Quang</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/effects.css">
+
+   <style>
+      .teacher-profile {
+         padding: 2rem;
+         max-width: 1200px;
+         margin: 0 auto;
+         animation: fadeInUp 0.5s ease;
+      }
+
+      .teacher-profile .back-btn {
+         margin-bottom: 1.5rem;
+      }
+
+      .teacher-profile .back-btn a {
+         display: inline-flex;
+         align-items: center;
+         gap: 0.5rem;
+         font-size: 1.6rem;
+         color: var(--light-color);
+         transition: all 0.3s ease;
+      }
+
+      .teacher-profile .back-btn a:hover {
+         color: var(--main-color);
+         transform: translateX(-5px);
+      }
+
+      .teacher-profile .header {
+         display: flex;
+         align-items: center;
+         gap: 2rem;
+         margin-bottom: 3rem;
+         padding-bottom: 2rem;
+         border-bottom: var(--border);
+      }
+
+      .teacher-profile .header .image {
+         width: 20rem;
+         height: 20rem;
+         border-radius: 50%;
+         overflow: hidden;
+         border: 5px solid var(--main-color);
+         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+      }
+
+      .teacher-profile .header .image img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+      }
+
+      .teacher-profile .header .info {
+         flex: 1;
+      }
+
+      .teacher-profile .header .info h2 {
+         font-size: 3rem;
+         color: var(--black);
+         margin-bottom: 0.5rem;
+      }
+
+      .teacher-profile .header .info .role {
+         font-size: 1.8rem;
+         color: var(--main-color);
+         margin-bottom: 1rem;
+      }
+
+      .teacher-profile .header .info .stats {
+         display: flex;
+         gap: 2rem;
+         margin: 1.5rem 0;
+      }
+
+      .teacher-profile .header .info .stats .stat {
+         text-align: center;
+         background: var(--light-bg);
+         padding: 1rem 2rem;
+         border-radius: 0.5rem;
+      }
+
+      .teacher-profile .header .info .stats .stat span {
+         display: block;
+         font-size: 2.5rem;
+         color: var(--black);
+         font-weight: 700;
+      }
+
+      .teacher-profile .header .info .stats .stat p {
+         font-size: 1.4rem;
+         color: var(--light-color);
+      }
+
+      .teacher-profile .header .social {
+         display: flex;
+         gap: 1rem;
+         margin-top: 1.5rem;
+      }
+
+      .teacher-profile .header .social a {
+         height: 4.5rem;
+         width: 4.5rem;
+         line-height: 4.5rem;
+         border-radius: 50%;
+         font-size: 1.8rem;
+         background: var(--light-bg);
+         color: var(--black);
+         text-align: center;
+         transition: all 0.3s ease;
+      }
+
+      .teacher-profile .header .social a:hover {
+         background: var(--main-color);
+         color: var(--white);
+         transform: translateY(-5px);
+      }
+
+      .teacher-profile .details {
+         display: grid;
+         grid-template-columns: 2fr 1fr;
+         gap: 3rem;
+         margin-bottom: 3rem;
+      }
+
+      .teacher-profile .details .about h3,
+      .teacher-profile .details .qualifications h3,
+      .teacher-profile .courses h3 {
+         font-size: 2.2rem;
+         color: var(--black);
+         margin-bottom: 1.5rem;
+         padding-bottom: 0.7rem;
+         border-bottom: var(--border);
+      }
+
+      .teacher-profile .details .about p {
+         font-size: 1.6rem;
+         line-height: 1.8;
+         color: var(--light-color);
+         margin-bottom: 1.5rem;
+      }
+
+      .teacher-profile .details .qualifications .item {
+         margin-bottom: 1.5rem;
+         padding-bottom: 1.5rem;
+         border-bottom: 1px dashed rgba(0,0,0,0.1);
+      }
+
+      .teacher-profile .details .qualifications .item:last-child {
+         border-bottom: none;
+      }
+
+      .teacher-profile .details .qualifications .item h4 {
+         font-size: 1.8rem;
+         color: var(--black);
+         margin-bottom: 0.5rem;
+      }
+
+      .teacher-profile .details .qualifications .item p {
+         font-size: 1.5rem;
+         color: var(--light-color);
+      }
+
+      .teacher-profile .details .qualifications .item .year {
+         font-size: 1.4rem;
+         color: var(--main-color);
+         margin-bottom: 0.5rem;
+      }
+
+      .teacher-profile .courses .box-container {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+         gap: 1.5rem;
+      }
+
+      .teacher-profile .courses .box {
+         background: var(--white);
+         border-radius: 1rem;
+         padding: 2rem;
+         box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.05);
+         transition: all 0.3s ease;
+         position: relative;
+         overflow: hidden;
+         border: var(--border);
+      }
+
+      .teacher-profile .courses .box:hover {
+         transform: translateY(-10px);
+         box-shadow: 0 1rem 2rem rgba(0,0,0,0.1);
+         border-color: var(--main-color);
+      }
+
+      .teacher-profile .courses .box .image {
+         height: 20rem;
+         width: 100%;
+         border-radius: 0.5rem;
+         overflow: hidden;
+         margin-bottom: 2rem;
+      }
+
+      .teacher-profile .courses .box .image img {
+         height: 100%;
+         width: 100%;
+         object-fit: cover;
+         transition: all 0.3s ease;
+      }
+
+      .teacher-profile .courses .box:hover .image img {
+         transform: scale(1.1);
+      }
+
+      .teacher-profile .courses .box h4 {
+         font-size: 2rem;
+         color: var(--black);
+         margin-bottom: 1rem;
+      }
+
+      .teacher-profile .courses .box .students {
+         font-size: 1.5rem;
+         color: var(--light-color);
+         margin-bottom: 1rem;
+      }
+
+      .teacher-profile .courses .box .rating {
+         margin: 1rem 0;
+      }
+
+      .teacher-profile .courses .box .rating i {
+         color: var(--main-color);
+         font-size: 1.5rem;
+      }
+
+      .teacher-profile .courses .box .rating span {
+         font-size: 1.5rem;
+         color: var(--light-color);
+      }
+
+      .teacher-profile .courses .box .buttons {
+         display: flex;
+         gap: 1rem;
+         margin-top: 2rem;
+      }
+
+      @media (max-width: 991px) {
+         .teacher-profile .header {
+            flex-direction: column;
+            text-align: center;
+         }
+
+         .teacher-profile .header .social {
+            justify-content: center;
+         }
+
+         .teacher-profile .details {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      @media (max-width: 768px) {
+         .teacher-profile .header .stats {
+            flex-direction: column;
+            align-items: center;
+         }
+      }
+   </style>
+</head>
+<body>
+
+<header></header>
+
+<div class="side-bar">
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+
+   <div class="profile">
+      <img src="images/pic-1.jpg" class="image" alt="">
+      <h3 class="name">Quang Quách</h3>
+      <p class="role">Học viên</p>
+      <a href="profile.html" class="btn">Xem thông tin</a>
+   </div>
+
+   <nav class="navbar">
+      <a href="home.html"><i class="fas fa-home"></i><span>Trang chủ</span></a>
+      <a href="about.html"><i class="fas fa-question"></i><span>Về chúng tôi</span></a>
+      <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>Khóa học</span></a>
+      <a href="teachers.html" class="active"><i class="fas fa-chalkboard-user"></i><span>Giáo viên</span></a>
+      <a href="contact.html"><i class="fas fa-headset"></i><span>Liên hệ</span></a>
+   </nav>
+</div>
+
+<section class="teacher-profile">
+   <div class="back-btn">
+      <a href="teachers.html"><i class="fas fa-arrow-left"></i> Trở về danh sách giáo viên</a>
+   </div>
+
+   <div class="header">
+      <div class="image">
+         <img src="images/pic-2.jpg" alt="Giảng viên Quách Quang">
+      </div>
+
+      <div class="info">
+         <h2>Quách Quang</h2>
+         <p class="role">Giảng viên Toán</p>
+
+         <div class="stats">
+            <div class="stat">
+               <span>15+</span>
+               <p>Năm kinh nghiệm</p>
+            </div>
+
+            <div class="stat">
+               <span>20+</span>
+               <p>Khóa học</p>
+            </div>
+
+            <div class="stat">
+               <span>5000+</span>
+               <p>Học viên</p>
+            </div>
+
+            <div class="stat">
+               <span>4.9</span>
+               <p>Đánh giá</p>
+            </div>
+         </div>
+
+         <div class="social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+         </div>
+      </div>
+   </div>
+
+   <div class="details">
+      <div class="about">
+         <h3>Giới thiệu</h3>
+         <p>Thầy Quách Quang là một trong những giảng viên Toán hàng đầu tại Học viện Quách Quang với hơn 15 năm kinh nghiệm trong lĩnh vực giảng dạy. Thầy tốt nghiệp xuất sắc ngành Toán học tại Đại học Quốc gia Hà Nội và có bằng Thạc sĩ Toán học ứng dụng.</p>
+         
+         <p>Với phương pháp giảng dạy dễ hiểu, logic và khoa học, thầy Quang đã giúp hàng nghìn học sinh đạt kết quả cao trong các kỳ thi quan trọng như THPT Quốc gia, Olympic Toán học và các kỳ thi học sinh giỏi các cấp. Thầy có khả năng truyền đạt những kiến thức Toán học phức tạp thành những khái niệm đơn giản, dễ hiểu cho học sinh.</p>
+         
+         <p>Ngoài việc giảng dạy, thầy Quang còn là tác giả của nhiều cuốn sách và tài liệu luyện thi Toán học được đánh giá cao. Thầy thường xuyên cập nhật các phương pháp giảng dạy mới, kết hợp công nghệ để tạo ra những bài giảng hấp dẫn, hiệu quả cho học viên.</p>
+
+         <p>Với tâm niệm "Học Toán là học cách tư duy", thầy Quang không chỉ giúp học sinh nắm vững kiến thức mà còn phát triển tư duy logic, khả năng giải quyết vấn đề - những kỹ năng quan trọng không chỉ trong học tập mà còn trong cuộc sống.</p>
+      </div>
+
+      <div class="qualifications">
+         <h3>Học vấn & Chứng chỉ</h3>
+         
+         <div class="item">
+            <p class="year">2008 - 2010</p>
+            <h4>Thạc sĩ Toán học ứng dụng</h4>
+            <p>Đại học Quốc gia Hà Nội</p>
+         </div>
+
+         <div class="item">
+            <p class="year">2004 - 2008</p>
+            <h4>Cử nhân Toán học</h4>
+            <p>Đại học Quốc gia Hà Nội</p>
+         </div>
+
+         <div class="item">
+            <p class="year">2015</p>
+            <h4>Chứng chỉ Phương pháp giảng dạy Toán tiên tiến</h4>
+            <p>Viện Nghiên cứu Giáo dục Hàn Quốc</p>
+         </div>
+
+         <div class="item">
+            <p class="year">2018</p>
+            <h4>Chứng chỉ Ứng dụng CNTT trong giảng dạy Toán học</h4>
+            <p>Microsoft Education</p>
+         </div>
+
+         <div class="item">
+            <p class="year">2020</p>
+            <h4>Giáo viên xuất sắc</h4>
+            <p>Bộ Giáo dục và Đào tạo</p>
+         </div>
+      </div>
+   </div>
+
+   <div class="courses">
+      <h3>Khóa học của giảng viên</h3>
+      
+      <div class="box-container">
+         <div class="box">
+            <div class="image">
+               <img src="images/pic-math.jpg" alt="Khóa học Toán THPT Quốc gia">
+            </div>
+            <h4>Khóa học Toán THPT Quốc gia</h4>
+            <p class="students"><i class="fas fa-user"></i> 2500+ học viên</p>
+            <div class="rating">
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <span>(4.9/5)</span>
+            </div>
+            <div class="buttons">
+               <a href="playlist.html" class="inline-option-btn">Xem chi tiết</a>
+            </div>
+         </div>
+
+         <div class="box">
+            <div class="image">
+               <img src="images/pic-math.jpg" alt="Khóa học Toán nâng cao">
+            </div>
+            <h4>Khóa học Toán nâng cao</h4>
+            <p class="students"><i class="fas fa-user"></i> 1800+ học viên</p>
+            <div class="rating">
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star-half-alt"></i>
+               <span>(4.8/5)</span>
+            </div>
+            <div class="buttons">
+               <a href="playlist-math-advanced.html" class="inline-option-btn">Xem chi tiết</a>
+            </div>
+         </div>
+
+         <div class="box">
+            <div class="image">
+               <img src="images/pic-math.jpg" alt="Toán học sinh giỏi">
+            </div>
+            <h4>Toán học sinh giỏi</h4>
+            <p class="students"><i class="fas fa-user"></i> 850+ học viên</p>
+            <div class="rating">
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <span>(5/5)</span>
+            </div>
+            <div class="buttons">
+               <a href="#" class="inline-option-btn">Xem chi tiết</a>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<footer></footer>
+
+<script src="js/script.js"></script>
+<script src="js/footer.js"></script>
+<script src="js/header.js"></script>
+<script src="js/button-effects.js"></script>
+<script src="js/page-loading.js"></script>
+
+</body>
+</html> 

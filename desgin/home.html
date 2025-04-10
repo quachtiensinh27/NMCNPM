@@ -72,7 +72,7 @@
          </div>
          
          <div class="hero-buttons">
-            <a href="register.html" class="inline-option-btn btn discover-btn">Đăng Ký Ngay</a>
+            <a href="about.html" class="inline-option-btn btn discover-btn">Khám Phá Về Chúng Tôi</a>
             <a href="courses.html" class="inline-option-btn btn discover-btn">Khám Phá Khóa Học</a>
          </div>
       </div>
@@ -157,45 +157,7 @@
    <script src="js/header.js"></script>
    <script src="js/footer.js"></script>
    <script src="js/effects.js"></script>
-   <script>
-      // Thêm các hiệu ứng
-      document.addEventListener('DOMContentLoaded', function() {
-         // Thêm toast notification khi đăng ký
-         const registerBtn = document.querySelector('.register-btn');
-         if (registerBtn) {
-            registerBtn.addEventListener('click', function(e) {
-               e.preventDefault();
-               showToast('Đang chuyển hướng đến trang đăng ký...', 'info');
-               setTimeout(() => {
-                  window.location.href = 'register.html';
-               }, 1000);
-            });
-         }
-
-         // Thêm toast notification khi xem khóa học
-         const courseBtns = document.querySelectorAll('.inline-btn');
-         courseBtns.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-               e.preventDefault();
-               showToast('Đang chuyển hướng đến khóa học...', 'info');
-               setTimeout(() => {
-                  window.location.href = this.getAttribute('href');
-               }, 1000);
-            });
-         });
-
-         // Thêm toast notification khi xem thêm khóa học
-         const moreBtn = document.querySelector('.more-btn .btn');
-         if (moreBtn) {
-            moreBtn.addEventListener('click', function(e) {
-               e.preventDefault();
-               showToast('Đang chuyển hướng đến danh sách khóa học...', 'info');
-               setTimeout(() => {
-                  window.location.href = 'courses.html';
-               }, 1000);
-            });
-         }
-      });
-   </script>
+   <script src="js/page-loading.js"></script>
+   <script src="js/button-effects.js"></script>
 </body>
 </html>
