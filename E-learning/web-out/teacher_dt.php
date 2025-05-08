@@ -46,7 +46,7 @@ if(isset($_POST['tutor_fetch'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
+    <title>QuachEdu</title>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -70,7 +70,7 @@ if(isset($_POST['tutor_fetch'])){
         <a href="course.php">Khóa học</a>
         <a href="teacher.php">Giáo viên</a>
         <a href="review.html">Đánh giá</a>
-        <a href="contact.html">Liên hệ</a>
+        <a href="contact.php">Liên hệ</a>
         <a href="login.php">Đăng nhập</a>
         <a href="register.php">Đăng ký</a>
     </nav>
@@ -91,10 +91,10 @@ if(isset($_POST['tutor_fetch'])){
          <span><?= $fetch_tutor['profession']; ?></span>
       </div>
       <div class="flex">
-         <p>total playlists : <span><?= $total_playlists; ?></span></p>
-         <p>total videos : <span><?= $total_contents; ?></span></p>
-         <p>total likes : <span><?= $total_likes; ?></span></p>
-         <p>total comments : <span><?= $total_comments; ?></span></p>
+         <p>Các khóa học : <span><?= $total_playlists; ?></span></p>
+         <p>Video : <span><?= $total_contents; ?></span></p>
+         <p>Lượt thích : <span><?= $total_likes; ?></span></p>
+         <p>Bình luận : <span><?= $total_comments; ?></span></p>
       </div>
    </div>
 
@@ -110,7 +110,7 @@ if(isset($_POST['tutor_fetch'])){
 
       <?php
          $select_courses = $conn->prepare("SELECT * FROM `playlist` WHERE tutor_id = ? AND status = ?");
-         $select_courses->execute([$tutor_id, 'active']);
+         $select_courses->execute([$tutor_id, 'Mở']);
          if($select_courses->rowCount() > 0){
             while($fetch_course = $select_courses->fetch(PDO::FETCH_ASSOC)){
                $course_id = $fetch_course['id'];
@@ -123,12 +123,12 @@ if(isset($_POST['tutor_fetch'])){
          <img src="../web-in/uploaded_files/<?= $fetch_course['thumb']; ?>" class="thumb" alt="">
          <h3><?= $fetch_course['title']; ?></h3>
          <p><?= $fetch_course['description']; ?></p> <!-- Hiển thị mô tả -->
-         <a href="playlist.php?get_id=<?= $course_id; ?>" class="inline-btn">Xem chi tiết</a>
+         <a href="playlist.php?get_id=<?= $course_id; ?>" class="inline-btn">Xem thêm</a>
       </div>
       <?php
          }
       }else{
-         echo '<p class="empty">no courses added yet!</p>';
+         echo '<p class="empty">Không tìm thấy khóa học</p>';
       }
       ?>
 
@@ -145,23 +145,23 @@ if(isset($_POST['tutor_fetch'])){
     <div class="box-container">
 
         <div class="box">
-            <h3>về chúng tôi</h3>
-            <p>trung tâm giáo dục QuachEdu.</p>
+            <h3>Về chúng tôi</h3>
+            <p>Trung tâm giáo dục QuachEdu. - đào tạo, ôn thi đại học hàng đầu Việt Nam.</p>
         </div>
 
         <div class="box">
-            <h3>liên kết</h3>
+            <h3>Liên kết</h3>
             <a href="home.html">Trang chủ</a>
             <a href="course.php">Khóa học</a>
             <a href="teacher.php">Giáo viên</a>
             <a href="review.html">Đánh giá</a>
-            <a href="contact.html">Liên hệ</a>
+            <a href="contact.php">Liên hệ</a>
             <a href="login.php">Đăng nhập</a>
             <a href="register.php">Đăng ký</a>
         </div>
 
         <div class="box">
-            <h3>theo dõi</h3>
+            <h3>Theo dõi</h3>
             <a href="https://www.facebook.com/profile.php?id=61575079702285">facebook</a>
             <a href="#">twitter</a>
             <a href="#">instagram</a>
@@ -169,15 +169,15 @@ if(isset($_POST['tutor_fetch'])){
         </div>
 
         <div class="box">
-            <h3>liên hệ</h3>
+            <h3>Liên hệ</h3>
            <p> <i class="sđt"></i> 098-686-4461 </p>
            <p> <i class="email"></i> quachEdu@gmail.com </p>
-           <p> <i class="địa chỉ"></i> Hanoi, Vietnam </p>
+           <p> <i class="địa chỉ"></i>144 Xuan Thuy, Hanoi, Vietnam </p>
         </div>
 
     </div>
 
-    <div class="credit"> created by <span> team 2 </span> | all rights reserved </div>
+    <div class="credit"> <span>Nhóm 2</span> - Nhập môn công nghệ phần mềm</div>
 
 </section>
 

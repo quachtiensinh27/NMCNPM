@@ -15,7 +15,7 @@ if(isset($_COOKIE['user_id'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
+    <title>QuachEdu</title>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -39,7 +39,7 @@ if(isset($_COOKIE['user_id'])){
         <a href="course.php">Khóa học</a>
         <a href="teacher.php">Giáo viên</a>
         <a href="review.html">Đánh giá</a>
-        <a href="contact.html">Liên hệ</a>
+        <a href="contact.php">Liên hệ</a>
         <a href="login.php">Đăng nhập</a>
         <a href="register.php">Đăng ký</a>
     </nav>
@@ -47,7 +47,7 @@ if(isset($_COOKIE['user_id'])){
 </header>
 
 
-<h1 class="heading"> Giảng viên </h1>
+<h1 class="heading"> Giáo viên </h1>
 
 <!-- teachers section starts  -->
 
@@ -63,11 +63,11 @@ if(isset($_COOKIE['user_id'])){
 
                $tutor_id = $fetch_tutor['id'];
 
-               $count_playlists = $conn->prepare("SELECT * FROM `playlist` WHERE tutor_id = ?");
+               $count_playlists = $conn->prepare("SELECT * FROM `playlist` WHERE tutor_id = ? AND status = 'Mở'");
                $count_playlists->execute([$tutor_id]);
                $total_playlists = $count_playlists->rowCount();
 
-               $count_contents = $conn->prepare("SELECT * FROM `content` WHERE tutor_id = ?");
+               $count_contents = $conn->prepare("SELECT * FROM `content` WHERE tutor_id = ? AND status = 'Mở'");
                $count_contents->execute([$tutor_id]);
                $total_contents = $count_contents->rowCount();
 
@@ -88,18 +88,18 @@ if(isset($_COOKIE['user_id'])){
             </div>
          </div>
          <p>Khóa học : <span><?= $total_playlists; ?></span></p>
-         <p>Tổng video : <span><?= $total_contents ?></span></p>
-         <p>Tổng like : <span><?= $total_likes ?></span></p>
+         <p>Video : <span><?= $total_contents ?></span></p>
+         <p>Lượt thích : <span><?= $total_likes ?></span></p>
          <hr class="section-footer">
          <form action="teacher_dt.php" method="post">
             <input type="hidden" name="tutor_email" value="<?= $fetch_tutor['email']; ?>">
-            <input type="submit" value="view profile" name="tutor_fetch" class="inline-btn">
+            <input type="submit" value="Xem chi tiết" name="tutor_fetch" class="inline-btn">
          </form>
       </div>
       <?php
             }
          }else{
-            echo '<p class="empty">no tutors found!</p>';
+            echo '<p class="empty">Không tìm thấy giáo viên nào!</p>';
          }
       ?>
 
@@ -119,23 +119,23 @@ if(isset($_COOKIE['user_id'])){
     <div class="box-container">
 
         <div class="box">
-            <h3>về chúng tôi</h3>
-            <p>trung tâm giáo dục QuachEdu.</p>
+            <h3>Về chúng tôi</h3>
+            <p>Trung tâm giáo dục QuachEdu. - đào tạo, ôn thi đại học hàng đầu Việt Nam.</p>
         </div>
 
         <div class="box">
-            <h3>liên kết</h3>
+            <h3>Liên kết</h3>
             <a href="home.html">Trang chủ</a>
             <a href="course.php">Khóa học</a>
             <a href="teacher.php">Giáo viên</a>
             <a href="review.html">Đánh giá</a>
-            <a href="contact.html">Liên hệ</a>
+            <a href="contact.php">Liên hệ</a>
             <a href="login.php">Đăng nhập</a>
             <a href="register.php">Đăng ký</a>
         </div>
 
         <div class="box">
-            <h3>theo dõi</h3>
+            <h3>Theo dõi</h3>
             <a href="https://www.facebook.com/profile.php?id=61575079702285">facebook</a>
             <a href="#">twitter</a>
             <a href="#">instagram</a>
@@ -143,15 +143,15 @@ if(isset($_COOKIE['user_id'])){
         </div>
 
         <div class="box">
-            <h3>liên hệ</h3>
+            <h3>Liên hệ</h3>
            <p> <i class="sđt"></i> 098-686-4461 </p>
            <p> <i class="email"></i> quachEdu@gmail.com </p>
-           <p> <i class="địa chỉ"></i> Hanoi, Vietnam </p>
+           <p> <i class="địa chỉ"></i>144 Xuan Thuy, Hanoi, Vietnam </p>
         </div>
 
     </div>
 
-    <div class="credit"> created by <span> team 2 </span> | all rights reserved </div>
+    <div class="credit"> <span>Nhóm 2</span> - Nhập môn công nghệ phần mềm</div>
 
 </section>
 

@@ -1,5 +1,5 @@
 <footer class="footer">
 
-   &copy; copyright @ <?= date('Y'); ?> by <span>mr. web designer</span> | all rights reserved!
+    <span>Nhóm 2</span> - Nhập môn công nghệ phần mềm
 
 </footer>

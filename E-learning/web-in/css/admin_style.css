@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
 
 :root{
-   --main-color:#8e44ad;
+   --main-color:#6B7CFF;
    --red:#e74c3c;
    --oragen:#f39c12;
    --white:#fff;
@@ -298,6 +298,7 @@ section{
    background-color: var(--white);
    border-right: var(--border);
    z-index: 1200;
+   overflow-y: auto;
 }
 
 .side-bar .close-side-bar{
@@ -352,7 +353,7 @@ section{
 
 .side-bar .navbar a{
    display:block;
-   padding: 2rem;
+   padding: 1.5rem;
    margin: .5rem 0;
    font-size: 1.8rem;
 }
@@ -451,7 +452,10 @@ section{
 .form-container .flex .col{
    flex: 1 1 25rem;
 }
-
+.dashboard {
+   padding: 3rem 2rem;
+   min-height: 100vh;
+}
 .dashboard .box-container{
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
@@ -837,7 +841,14 @@ section{
    text-overflow: ellipsis;
    overflow-x: hidden;
 }
-
+.view-content {
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 2rem;
+   background: var(--white);
+   border-radius: 10px;
+   box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
 .view-content .container{
    background-color: var(--white);
    border-radius: .5rem;
@@ -904,6 +915,11 @@ section{
    line-height: 1.7;
    font-size: 1.7rem;
    color: var(--light-color);
+}
+
+.comments {
+   padding: 3rem 2rem;
+   min-height: 100vh;
 }
 
 .comments .show-comments{
@@ -987,6 +1003,142 @@ section{
 }
 
 
+
+/*jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj*/
+.user-management {
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 2rem;
+   background: var(--white);
+   border-radius: 10px;
+   box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.user-management .filter-buttons {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1rem;
+   margin-bottom: 2rem;
+   justify-content: flex-start; /* Căn sát bên trái */
+}
+
+.user-management .filter-buttons .btn {
+   flex: 0 0 15%; /* Đặt độ rộng khoảng 15% */
+   padding: 0.6rem 1.2rem;
+   font-size: 1.4rem;
+   background:  #8a2be2;
+   color:  #fefefe;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: 0.3s;
+   text-align: center; /* Căn giữa nội dung trong nút */
+   height: 48px;
+}
+
+.user-management .filter-buttons .btn:hover {
+   background:  #8a2be2;
+}
+
+/* Căn chỉnh bảng để chiếm toàn bộ chiều rộng màn hình */
+.user-management .table-container {
+   width: 100%;
+   overflow-x: 100%;
+   margin-top: 2rem;
+}
+
+.user-management table {
+   width: 100%;
+   border-collapse: collapse;
+   text-align: left;
+   background-color: #fff;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.user-management table th, table td {
+   padding: 1.5rem;
+   border: 1px solid #ddd;
+   font-size: 1.6rem;
+}
+
+.user-management table th {
+   background-color: #f4f4f4;
+   font-weight: bold;
+   text-align: center;
+}
+
+.user-management table td {
+   text-align: center;
+}
+
+/* Căn giữa nút Update */
+.user-management .btn {
+   display: inline-block;
+   padding: 0.8rem 2rem;
+   font-size: 1.4rem;
+   color: #fff;
+   background-color: #284ed5;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   text-align: center;
+}
+
+.user-management .btn:hover {
+   background-color: #284ed5;
+}
+
+/* Nút Delete */
+.user-management .delete-btn {
+   background-color: #f44336;
+   color: #fff;
+   padding: 0.8rem 2rem;
+   font-size: 1.4rem;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+}
+
+.user-management .delete-btn:hover {
+   background-color: #d32f2f;
+}
+
+/* Thanh tìm kiếm */
+.user-management .search-form {
+   display: flex;
+   justify-content: center;
+   gap: 1rem;
+   width: 100%;
+   max-width: 800px;
+   margin: 0 auto 2rem;
+}
+
+.user-management .search-form input {
+   height: 48px;
+   flex: 0 0 75%;
+   padding: 1rem;
+   font-size: 1.6rem;
+   border: 1px solid #ccc;
+   border-radius: 8px;
+   box-sizing: border-box;
+}
+
+.user-management .search-form .btn {
+   height: 48px;
+   flex: 0 0 20%;
+   padding: 1.2rem;
+   font-size: 1.6rem;
+   background: #d432ed;
+   color: rgb(255, 255, 255);
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+
+}
+
+.user-management .search-form .btn:hover {
+   background: #3f32ed;
+}
 
 
 

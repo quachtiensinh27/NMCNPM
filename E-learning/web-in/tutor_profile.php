@@ -47,7 +47,7 @@ if(isset($_POST['tutor_fetch'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>tutor's profile</title>
+   <title>QuachEdu</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -64,7 +64,7 @@ if(isset($_POST['tutor_fetch'])){
 
 <section class="tutor-profile">
 
-   <h1 class="heading">profile details</h1>
+   <h1 class="heading">Thông tin giáo viên</h1>
 
    <div class="details">
       <div class="tutor">
@@ -73,10 +73,10 @@ if(isset($_POST['tutor_fetch'])){
          <span><?= $fetch_tutor['profession']; ?></span>
       </div>
       <div class="flex">
-         <p>total playlists : <span><?= $total_playlists; ?></span></p>
-         <p>total videos : <span><?= $total_contents; ?></span></p>
-         <p>total likes : <span><?= $total_likes; ?></span></p>
-         <p>total comments : <span><?= $total_comments; ?></span></p>
+         <p>Tổng khóa học : <span><?= $total_playlists; ?></span></p>
+         <p>Tổng video : <span><?= $total_contents; ?></span></p>
+         <p>Tổng lượt thích : <span><?= $total_likes; ?></span></p>
+         <p>Tổng bình luận : <span><?= $total_comments; ?></span></p>
       </div>
    </div>
 
@@ -86,13 +86,13 @@ if(isset($_POST['tutor_fetch'])){
 
 <section class="courses">
 
-   <h1 class="heading">latest courese</h1>
+   <h1 class="heading">Khóa học mới nhất</h1>
 
    <div class="box-container">
 
       <?php
          $select_courses = $conn->prepare("SELECT * FROM `playlist` WHERE tutor_id = ? AND status = ?");
-         $select_courses->execute([$tutor_id, 'active']);
+         $select_courses->execute([$tutor_id, 'Mở']);
          if($select_courses->rowCount() > 0){
             while($fetch_course = $select_courses->fetch(PDO::FETCH_ASSOC)){
                $course_id = $fetch_course['id'];
@@ -111,12 +111,12 @@ if(isset($_POST['tutor_fetch'])){
          </div>
          <img src="uploaded_files/<?= $fetch_course['thumb']; ?>" class="thumb" alt="">
          <h3 class="title"><?= $fetch_course['title']; ?></h3>
-         <a href="playlist.php?get_id=<?= $course_id; ?>" class="inline-btn">view playlist</a>
+         <a href="playlist.php?get_id=<?= $course_id; ?>" class="inline-btn">Xem khóa học</a>
       </div>
       <?php
          }
       }else{
-         echo '<p class="empty">no courses added yet!</p>';
+         echo '<p class="empty">Chưa có khóa học nào!</p>';
       }
       ?>
 
@@ -128,7 +128,11 @@ if(isset($_POST['tutor_fetch'])){
 
 
 
-
+<style>
+      .inline-btn {
+      background-color:rgb(142, 107, 255);
+   }
+</style>
 
 
 

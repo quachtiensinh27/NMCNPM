@@ -24,7 +24,7 @@ if(isset($_POST['submit'])){
   if(!empty($name)){
    $update_name = $conn->prepare("UPDATE `users` SET name = ? WHERE id = ?");
    $update_name->execute([$name, $user_id]);
-   $message[] = 'username updated successfully!';
+   $message[] = 'Cập nhật tên thành công!';
   }
 
    $email = $_POST['email'];
@@ -34,11 +34,11 @@ if(isset($_POST['submit'])){
       $select_email = $conn->prepare("SELECT email FROM `users` WHERE email = ?");
       $select_email->execute([$email]);
       if($select_email->rowCount() > 0){
-         $message[] = 'email already taken!';
+         $message[] = 'Email đã được sử dụng!';
       }else{
          $update_email = $conn->prepare("UPDATE `users` SET email = ? WHERE id = ?");
          $update_email->execute([$email, $user_id]);
-         $message[] = 'email updated successfully!';
+         $message[] = 'Cập nhật email thành công!';
       }
    }
 
@@ -52,7 +52,7 @@ if(isset($_POST['submit'])){
 
    if(!empty($image)){
       if($image_size > 2000000){
-         $message[] = 'image size too large!';
+         $message[] = 'Kích thước ảnh quá lớn!';
       }else{
          $update_image = $conn->prepare("UPDATE `users` SET `image` = ? WHERE id = ?");
          $update_image->execute([$rename, $user_id]);
@@ -60,7 +60,7 @@ if(isset($_POST['submit'])){
          if($prev_image != '' AND $prev_image != $rename){
             unlink('uploaded_files/'.$prev_image);
          }
-         $message[] = 'image updated successfully!';
+         $message[] = 'Cập nhật ảnh thành công!';
       }
    }
 
@@ -74,16 +74,16 @@ if(isset($_POST['submit'])){
 
    if($old_pass != $empty_pass){
       if($old_pass != $prev_pass){
-         $message[] = 'old password not matched!';
+         $message[] = 'Mật khẩu cũ không khớp!';
       }elseif($new_pass != $cpass){
-         $message[] = 'confirm password not matched!';
+         $message[] = 'Mật khẩu xác nhận không khớp!';
       }else{
          if($new_pass != $empty_pass){
             $update_pass = $conn->prepare("UPDATE `users` SET password = ? WHERE id = ?");
             $update_pass->execute([$cpass, $user_id]);
-            $message[] = 'password updated successfully!';
+            $message[] = 'Cập nhật mật khẩu thành công!';
          }else{
-            $message[] = 'please enter a new password!';
+            $message[] = 'Chưa nhập mật khẩu mới!';
          }
       }
    }
@@ -98,7 +98,7 @@ if(isset($_POST['submit'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>update profile</title>
+   <title>QuachEdu</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -114,26 +114,29 @@ if(isset($_POST['submit'])){
 <section class="form-container" style="min-height: calc(100vh - 19rem);">
 
    <form action="" method="post" enctype="multipart/form-data">
-      <h3>update profile</h3>
+      <h3>Cập nhật thông tin</h3>
       <div class="flex">
          <div class="col">
-            <p>your name</p>
+            <p>Tên</p>
             <input type="text" name="name" placeholder="<?= $fetch_profile['name']; ?>" maxlength="100" class="box">
-            <p>your email</p>
+            <p>Email</p>
             <input type="email" name="email" placeholder="<?= $fetch_profile['email']; ?>" maxlength="100" class="box">
-            <p>update pic</p>
+            <p>Ảnh đại diện</p>
             <input type="file" name="image" accept="image/*" class="box">
          </div>
          <div class="col">
-               <p>old password</p>
-               <input type="password" name="old_pass" placeholder="enter your old password" maxlength="50" class="box">
-               <p>new password</p>
-               <input type="password" name="new_pass" placeholder="enter your new password" maxlength="50" class="box">
-               <p>confirm password</p>
-               <input type="password" name="cpass" placeholder="confirm your new password" maxlength="50" class="box">
+               <p>Mật khẩu cũ</p>
+               <input type="password" name="old_pass" placeholder="Nhập mật khẩu cũ" maxlength="50" class="box"
+               autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+               <p>Mật khẩu mới</p>
+               <input type="password" name="new_pass" placeholder="Nhập mật khẩu mới" maxlength="50" class="box"
+               autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+               <p>Xác nhận mật khẩu mới</p>
+               <input type="password" name="cpass" placeholder="Xác nhận lại mật khẩu" maxlength="50" class="box"
+               autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
          </div>
       </div>
-      <input type="submit" name="submit" value="update profile" class="btn">
+      <input type="submit" name="submit" value="Cập nhật thông tin" class="btn">
    </form>
 
 </section>
@@ -143,7 +146,11 @@ if(isset($_POST['submit'])){
 
 
 
-
+<style>
+      .inline-btn {
+      background-color:rgb(142, 107, 255);
+   }
+</style>
 
 
 

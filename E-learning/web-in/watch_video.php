@@ -34,15 +34,15 @@ if(isset($_POST['like_content'])){
       if($select_likes->rowCount() > 0){
          $remove_likes = $conn->prepare("DELETE FROM `likes` WHERE user_id = ? AND content_id = ?");
          $remove_likes->execute([$user_id, $content_id]);
-         $message[] = 'removed from likes!';
+         $message[] = 'Bỏ thích!';
       }else{
          $insert_likes = $conn->prepare("INSERT INTO `likes`(user_id, tutor_id, content_id) VALUES(?,?,?)");
          $insert_likes->execute([$user_id, $tutor_id, $content_id]);
-         $message[] = 'added to likes!';
+         $message[] = 'Thêm lượt thích!';
       }
 
    }else{
-      $message[] = 'please login first!';
+      $message[] = 'Đăng nhập trước đã!';
    }
 
 }
@@ -69,19 +69,19 @@ if(isset($_POST['add_comment'])){
          $select_comment->execute([$content_id, $user_id, $tutor_id, $comment_box]);
 
          if($select_comment->rowCount() > 0){
-            $message[] = 'comment already added!';
+            $message[] = 'Bình luận đã được thêm!';
          }else{
             $insert_comment = $conn->prepare("INSERT INTO `comments`(id, content_id, user_id, tutor_id, comment) VALUES(?,?,?,?,?)");
             $insert_comment->execute([$id, $content_id, $user_id, $tutor_id, $comment_box]);
-            $message[] = 'new comment added!';
+            $message[] = 'Đã thêm bình luận mới!';
          }
 
       }else{
-         $message[] = 'something went wrong!';
+         $message[] = 'Có gì đó sai sai!';
       }
 
    }else{
-      $message[] = 'please login first!';
+      $message[] = 'Đăng nhập trước đã!';
    }
 
 }
@@ -97,9 +97,9 @@ if(isset($_POST['delete_comment'])){
    if($verify_comment->rowCount() > 0){
       $delete_comment = $conn->prepare("DELETE FROM `comments` WHERE id = ?");
       $delete_comment->execute([$delete_id]);
-      $message[] = 'comment deleted successfully!';
+      $message[] = 'Xóa bình luận thành công!';
    }else{
-      $message[] = 'comment already deleted!';
+      $message[] = 'Bình luận đã được xóa!';
    }
 
 }
@@ -115,11 +115,11 @@ if(isset($_POST['update_now'])){
    $verify_comment->execute([$update_id, $update_box]);
 
    if($verify_comment->rowCount() > 0){
-      $message[] = 'comment already added!';
+      $message[] = 'Bình luận đã được xóa!';
    }else{
       $update_comment = $conn->prepare("UPDATE `comments` SET comment = ? WHERE id = ?");
       $update_comment->execute([$update_box, $update_id]);
-      $message[] = 'comment edited successfully!';
+      $message[] = 'Xóa bình luận thành công!';
    }
 
 }
@@ -132,7 +132,7 @@ if(isset($_POST['update_now'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>watch video</title>
+   <title>QuachEdu</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -155,19 +155,19 @@ if(isset($_POST['update_now'])){
          $fetch_edit_comment = $verify_comment->fetch(PDO::FETCH_ASSOC);
 ?>
 <section class="edit-comment">
-   <h1 class="heading">edti comment</h1>
+   <h1 class="heading">Sửa bình luận</h1>
    <form action="" method="post">
       <input type="hidden" name="update_id" value="<?= $fetch_edit_comment['id']; ?>">
-      <textarea name="update_box" class="box" maxlength="1000" required placeholder="please enter your comment" cols="30" rows="10"><?= $fetch_edit_comment['comment']; ?></textarea>
+      <textarea name="update_box" class="box" maxlength="1000" required placeholder="Nhập bình luận" cols="30" rows="10"><?= $fetch_edit_comment['comment']; ?></textarea>
       <div class="flex">
-         <a href="watch_video.php?get_id=<?= $get_id; ?>" class="inline-option-btn">cancel edit</a>
-         <input type="submit" value="update now" name="update_now" class="inline-btn">
+         <a href="watch_video.php?get_id=<?= $get_id; ?>" class="inline-option-btn">Hủy</a>
+         <input type="submit" value="Cập nhật" name="update_now" class="inline-btn">
       </div>
    </form>
 </section>
 <?php
    }else{
-      $message[] = 'comment was not found!';
+      $message[] = 'Không có bình luận!';
    }
 }
 ?>
@@ -178,7 +178,7 @@ if(isset($_POST['update_now'])){
 
    <?php
       $select_content = $conn->prepare("SELECT * FROM `content` WHERE id = ? AND status = ?");
-      $select_content->execute([$get_id, 'active']);
+      $select_content->execute([$get_id, 'Mở']);
       if($select_content->rowCount() > 0){
          while($fetch_content = $select_content->fetch(PDO::FETCH_ASSOC)){
             $content_id = $fetch_content['id'];
@@ -199,7 +199,7 @@ if(isset($_POST['update_now'])){
       <h3 class="title"><?= $fetch_content['title']; ?></h3>
       <div class="info">
          <p><i class="fas fa-calendar"></i><span><?= $fetch_content['date']; ?></span></p>
-         <p><i class="fas fa-heart"></i><span><?= $total_likes; ?> likes</span></p>
+         <p><i class="fas fa-heart"></i><span><?= $total_likes; ?> Thích</span></p>
       </div>
       <div class="tutor">
          <img src="uploaded_files/<?= $fetch_tutor['image']; ?>" alt="">
@@ -210,15 +210,15 @@ if(isset($_POST['update_now'])){
       </div>
       <form action="" method="post" class="flex">
          <input type="hidden" name="content_id" value="<?= $content_id; ?>">
-         <a href="playlist.php?get_id=<?= $fetch_content['playlist_id']; ?>" class="inline-btn">view playlist</a>
+         <a href="playlist.php?get_id=<?= $fetch_content['playlist_id']; ?>" class="inline-btn">Xem khóa học</a>
          <?php
             if($verify_likes->rowCount() > 0){
          ?>
-         <button type="submit" name="like_content"><i class="fas fa-heart"></i><span>liked</span></button>
+         <button type="submit" name="like_content"><i class="fas fa-heart"></i><span>Thích</span></button>
          <?php
          }else{
          ?>
-         <button type="submit" name="like_content"><i class="far fa-heart"></i><span>like</span></button>
+         <button type="submit" name="like_content"><i class="far fa-heart"></i><span>Thích</span></button>
          <?php
             }
          ?>
@@ -228,7 +228,7 @@ if(isset($_POST['update_now'])){
    <?php
          }
       }else{
-         echo '<p class="empty">no videos added yet!</p>';
+         echo '<p class="empty">Không có video!</p>';
       }
    ?>
 
@@ -240,15 +240,15 @@ if(isset($_POST['update_now'])){
 
 <section class="comments">
 
-   <h1 class="heading">add a comment</h1>
+   <h1 class="heading">Thêm bình luận</h1>
 
    <form action="" method="post" class="add-comment">
       <input type="hidden" name="content_id" value="<?= $get_id; ?>">
-      <textarea name="comment_box" required placeholder="write your comment..." maxlength="1000" cols="30" rows="10"></textarea>
-      <input type="submit" value="add comment" name="add_comment" class="inline-btn">
+      <textarea name="comment_box" required placeholder="Bình luận vào đây..." maxlength="1000" cols="30" rows="10"></textarea>
+      <input type="submit" value="Thêm bình luận" name="add_comment" class="inline-btn">
    </form>
 
-   <h1 class="heading">user comments</h1>
+   <h1 class="heading">Bình luận học viên</h1>
 
    
    <div class="show-comments">
@@ -275,8 +275,8 @@ if(isset($_POST['update_now'])){
          ?>
          <form action="" method="post" class="flex-btn">
             <input type="hidden" name="comment_id" value="<?= $fetch_comment['id']; ?>">
-            <button type="submit" name="edit_comment" class="inline-option-btn">edit comment</button>
-            <button type="submit" name="delete_comment" class="inline-delete-btn" onclick="return confirm('delete this comment?');">delete comment</button>
+            <button type="submit" name="edit_comment" class="inline-option-btn">Sửa bình luận</button>
+            <button type="submit" name="delete_comment" class="inline-delete-btn" onclick="return confirm('delete this comment?');">Xóa</button>
          </form>
          <?php
          }
@@ -285,7 +285,7 @@ if(isset($_POST['update_now'])){
       <?php
        }
       }else{
-         echo '<p class="empty">no comments added yet!</p>';
+         echo '<p class="empty">Không có bình luận!</p>';
       }
       ?>
       </div>
@@ -296,7 +296,11 @@ if(isset($_POST['update_now'])){
 
 
 
-
+<style>
+      .inline-btn {
+      background-color:rgb(142, 107, 255);
+   }
+</style>
 
 
 

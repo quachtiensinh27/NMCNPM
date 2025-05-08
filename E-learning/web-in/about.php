@@ -16,7 +16,7 @@ if(isset($_COOKIE['user_id'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>about</title>
+   <title>QuachEdu</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -40,9 +40,10 @@ if(isset($_COOKIE['user_id'])){
       </div>
 
       <div class="content">
-         <h3>why choose us?</h3>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque nobis distinctio, nisi consequatur ad sequi, rem odit fugiat assumenda eligendi iure aut sunt ratione, tempore porro expedita quisquam.</p>
-         <a href="courses.html" class="inline-btn">our courses</a>
+         <h3>Tại sao chọn QuachEdu?</h3>
+         <p>Chúng tôi cung cấp các khóa học chất lượng cao được thiết kế bởi những chuyên gia hàng đầu trong lĩnh vực. Với phương pháp giảng dạy hiện đại và nội dung cập nhật, QuachEdu cam kết đem đến trải nghiệm học tập tốt nhất cho học viên mọi lứa tuổi.</p>
+         <p>Hơn 25,000 học viên đã thành công sau khi tham gia các khóa học trên nền tảng của chúng tôi. Bạn có thể học bất kỳ lúc nào, bất kỳ nơi đâu với đa dạng các khóa học từ cơ bản đến nâng cao.</p>
+         <a href="courses.php" class="inline-btn">Khám phá khóa học</a>
       </div>
 
    </div>
@@ -52,34 +53,28 @@ if(isset($_COOKIE['user_id'])){
       <div class="box">
          <i class="fas fa-graduation-cap"></i>
          <div>
-            <h3>+1k</h3>
-            <span>online courses</span>
+            <h3>+5</h3>
+            <span>Khóa học online</span>
          </div>
       </div>
 
       <div class="box">
          <i class="fas fa-user-graduate"></i>
          <div>
-            <h3>+25k</h3>
-            <span>brilliants students</span>
+            <h3>+2k</h3>
+            <span>Học sinh xuất sắc</span>
          </div>
       </div>
 
       <div class="box">
          <i class="fas fa-chalkboard-user"></i>
          <div>
-            <h3>+5k</h3>
-            <span>expert teachers</span>
+            <h3>4</h3>
+            <span>Giáo viên chuyên gia</span>
          </div>
       </div>
 
-      <div class="box">
-         <i class="fas fa-briefcase"></i>
-         <div>
-            <h3>100%</h3>
-            <span>job placement</span>
-         </div>
-      </div>
+ 
 
    </div>
 
@@ -91,108 +86,66 @@ if(isset($_COOKIE['user_id'])){
 
 <section class="reviews">
 
-   <h1 class="heading">student's reviews</h1>
+   <h1 class="heading">Đánh giá từ học sinh</h1>
 
    <div class="box-container">
 
       <div class="box">
-         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo fugiat, quaerat voluptate odio consectetur assumenda fugit maxime unde at ex?</p>
+         <p>"Tôi đã học được rất nhiều từ các khóa học tại QuachEdu. Giao diện thân thiện và nội dung chất lượng đã giúp tôi dễ dàng tiếp thu kiến thức mới. Giáo viên nhiệt tình và luôn sẵn sàng giải đáp thắc mắc."</p>
          <div class="user">
             <img src="images/pic-2.jpg" alt="">
             <div>
-               <h3>john deo</h3>
-               <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-               </div>
+               <h3>Nguyễn Văn An</h3>
             </div>
          </div>
       </div>
 
       <div class="box">
-         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo fugiat, quaerat voluptate odio consectetur assumenda fugit maxime unde at ex?</p>
+         <p>"Các khóa học với chất lượng tuyệt vời, đặc biệt là khóa học Toán của thầy Quách, rất dễ vào giấc ngủ."</p>
          <div class="user">
             <img src="images/pic-3.jpg" alt="">
             <div>
-               <h3>john deo</h3>
-               <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-               </div>
+               <h3>Trần Thị Bình</h3>
             </div>
          </div>
       </div>
 
       <div class="box">
-         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo fugiat, quaerat voluptate odio consectetur assumenda fugit maxime unde at ex?</p>
+         <p>"Tôi thích cách họ cập nhật các khóa học thường xuyên với công nghệ mới nhất. Điều này giúp tôi luôn bắt kịp với các xu hướng công nghệ. Giao diện học tập dễ sử dụng và tôi có thể học mọi lúc, mọi nơi."</p>
          <div class="user">
             <img src="images/pic-4.jpg" alt="">
             <div>
-               <h3>john deo</h3>
-               <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-               </div>
+               <h3>Lê Văn Công</h3>
             </div>
          </div>
       </div>
 
       <div class="box">
-         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo fugiat, quaerat voluptate odio consectetur assumenda fugit maxime unde at ex?</p>
+         <p>"Không có từ nào để chê chất lượng của trung tâm này. Thật tuyệt với, thật ko thể tin nổi !!!"</p>
          <div class="user">
             <img src="images/pic-5.jpg" alt="">
             <div>
-               <h3>john deo</h3>
-               <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-               </div>
+               <h3>Phạm Minh Dũng</h3>
             </div>
          </div>
       </div>
 
       <div class="box">
-         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo fugiat, quaerat voluptate odio consectetur assumenda fugit maxime unde at ex?</p>
+         <p>"Tôi đã thử nhiều nền tảng học trực tuyến khác nhau nhưng QuachEdu là tốt nhất. Chất lượng video rất cao và nội dung được cấu trúc một cách logic, từ cơ bản đến nâng cao. Đội ngũ hỗ trợ luôn phản hồi nhanh chóng."</p>
          <div class="user">
             <img src="images/pic-6.jpg" alt="">
             <div>
-               <h3>john deo</h3>
-               <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-               </div>
+               <h3>Ngô Thị Hoa</h3>
             </div>
          </div>
       </div>
 
       <div class="box">
-         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo fugiat, quaerat voluptate odio consectetur assumenda fugit maxime unde at ex?</p>
+         <p>"Tôi thích tính năng thảo luận trong mỗi bài học, nơi chúng tôi có thể trao đổi ý kiến và giải quyết vấn đề cùng nhau. Giáo viên rất chuyên nghiệp và có kinh nghiệm thực tế trong lĩnh vực công nghệ."</p>
          <div class="user">
             <img src="images/pic-7.jpg" alt="">
             <div>
-               <h3>john deo</h3>
-               <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-               </div>
+               <h3>Hoàng Văn Giang</h3>
             </div>
          </div>
       </div>
@@ -206,7 +159,11 @@ if(isset($_COOKIE['user_id'])){
 
 
 
-
+<style>
+      .inline-btn {
+      background-color:rgb(142, 107, 255);
+   }
+</style>
 
 
 

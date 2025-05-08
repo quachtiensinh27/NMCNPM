@@ -17,7 +17,7 @@ if(isset($_COOKIE['user_id'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>bookmarks</title>
+   <title>QuachEdu</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -32,7 +32,7 @@ if(isset($_COOKIE['user_id'])){
 
 <section class="courses">
 
-   <h1 class="heading">bookmarked playlists</h1>
+   <h1 class="heading">Danh sách khóa học</h1>
 
    <div class="box-container">
 
@@ -42,7 +42,7 @@ if(isset($_COOKIE['user_id'])){
          if($select_bookmark->rowCount() > 0){
             while($fetch_bookmark = $select_bookmark->fetch(PDO::FETCH_ASSOC)){
                $select_courses = $conn->prepare("SELECT * FROM `playlist` WHERE id = ? AND status = ? ORDER BY date DESC");
-               $select_courses->execute([$fetch_bookmark['playlist_id'], 'active']);
+               $select_courses->execute([$fetch_bookmark['playlist_id'], 'Mở']);
                if($select_courses->rowCount() > 0){
                   while($fetch_course = $select_courses->fetch(PDO::FETCH_ASSOC)){
 
@@ -62,16 +62,16 @@ if(isset($_COOKIE['user_id'])){
          </div>
          <img src="uploaded_files/<?= $fetch_course['thumb']; ?>" class="thumb" alt="">
          <h3 class="title"><?= $fetch_course['title']; ?></h3>
-         <a href="playlist.php?get_id=<?= $course_id; ?>" class="inline-btn">view playlist</a>
+         <a href="playlist.php?get_id=<?= $course_id; ?>" class="inline-btn">Xem khóa học</a>
       </div>
       <?php
                }
             }else{
-               echo '<p class="empty">no courses found!</p>';
+               echo '<p class="empty">Không tìm thấy khóa học!</p>';
             }
          }
       }else{
-         echo '<p class="empty">nothing bookmarked yet!</p>';
+         echo '<p class="empty">Chưa lưu khóa học nào!</p>';
       }
       ?>
 
@@ -81,7 +81,11 @@ if(isset($_COOKIE['user_id'])){
 
 
 
-
+<style>
+      .inline-btn {
+      background-color:rgb(142, 107, 255);
+   }
+</style>
 
 
 

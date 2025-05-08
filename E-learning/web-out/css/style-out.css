@@ -59,6 +59,8 @@ section{
   text-align: center;
   font-size: 4rem;
   text-transform: uppercase;
+  width: 90rem; /* Đặt độ rộng cố định là 90rem */
+  margin: 0 auto; /* Căn giữa phần tử */
 }
 
 .btn{
@@ -139,7 +141,9 @@ header .navbar a:hover{
 }
 
 .home .image1{
-  flex:1 1 40rem;
+  flex:1 1 30rem;
+  margin-right: 4rem;
+  margin-left: 4rem;
 }
 
 .home .image img{
@@ -192,16 +196,18 @@ header .navbar a:hover{
 }
 
 .course .box{
-  flex:1 1 50rem;
+  flex:1 1 45rem;
   border-radius: .5rem;
   border:.1rem solid rgba(0,0,0,.1);
   padding:1rem;
   position: relative;
 }
 
-.course .box img{
-  height:20rem;
-  width:100%;
+.course .box img {
+  height: 30rem; /* Chỉnh chiều cao theo ý muốn, ví dụ: 30rem */
+  width: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều rộng của box */
+  object-fit: cover; /* Đảm bảo ảnh không bị méo và vừa khung */
+  border-radius: 10px; /* Tùy chọn: Bo góc ảnh */
 }
 
 .course .box .amount{
@@ -221,8 +227,16 @@ header .navbar a:hover{
 }
 
 .course .box h3{
-  color:var(--pink);
+  color:var(--blue);
   font-size: 2.5rem;
+  margin-bottom: 1rem;
+
+}
+
+.course .box h4{
+  color:var(--pink);
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
 }
 
 .course .box p{
@@ -246,11 +260,41 @@ header .navbar a:hover{
 }
 
 .course .icons p i{
+  font-size: 1.8rem;
   padding-right: .4rem;
   color:var(--pink);
 }
+.course .box .btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem; /* Kích thước nút */
+  font-size: 1.4rem;
+  background: var(--pink); /* Màu nền hồng */
+  color: #fff; /* Màu chữ trắng */
+  border: none;
+  border-radius: 5px; /* Bo góc nút */
+  cursor: pointer;
+  text-align: left; /* Căn lề trái */
+  transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu */
+}
 
+.course .box .btn:hover {
+  background: var(--violet); /* Màu nền xanh khi hover */
+}
 
+.course .title{
+    color:transparent;
+    background:var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    padding:0 1rem;
+    padding-top: 2.5rem;
+    text-align: center;
+    font-size: 4rem;
+    text-transform: uppercase;
+    width: 90rem; /* Đặt độ rộng cố định là 90rem */
+    margin: 0 auto; /* Căn giữa phần tử */
+}
 /************************************************* COURSCES ***************************************/
 .playlist-container {
   display: flex;
@@ -282,6 +326,11 @@ header .navbar a:hover{
 .playlist-box h3 {
   margin: 1rem 0 0.5rem;
   font-size: 1.5rem;
+  color: #333;
+}
+.playlist-box h4 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.2rem;
   color: #333;
 }
 .playlist-box p {
@@ -502,7 +551,7 @@ header .navbar a:hover{
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
 }
 
 .login-register .image img {
@@ -538,7 +587,13 @@ header .navbar a:hover{
   border-radius: .5rem;
   border: .1rem solid #ccc;
 }
-
+.login-register .form-container .error-message {
+  color: red; /* Màu chữ đỏ để nổi bật */
+  font-size: 1.4rem; /* Kích thước chữ vừa phải */
+  margin: 1rem 0; /* Khoảng cách trên và dưới */
+  text-align: center; /* Căn giữa thông báo */
+  font-weight: bold; /* Làm chữ đậm */
+}
 .login-register .form-container form .btn {
   background: var(--violet);
   color: #fff;
@@ -770,6 +825,71 @@ header .navbar a:hover{
   color: #ffffff; 
 }
 
+/***********************pay-ment*****************************/
+.payment-section {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.payment-container {
+  display: flex;
+  gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.qr-code {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.qr-code .qr-image {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.payment-instructions {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.payment-instructions h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.payment-instructions p {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.payment-instructions .amount {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #d432ed;
+}
+
+.payment-instructions .transaction-content {
+  font-size: 1.4rem;
+  font-style: italic;
+  color: #333;
+}
 
 
 

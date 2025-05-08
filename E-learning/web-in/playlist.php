@@ -28,15 +28,15 @@ if(isset($_POST['save_list'])){
       if($select_list->rowCount() > 0){
          $remove_bookmark = $conn->prepare("DELETE FROM `bookmark` WHERE user_id = ? AND playlist_id = ?");
          $remove_bookmark->execute([$user_id, $list_id]);
-         $message[] = 'playlist removed!';
+         $message[] = 'Đã bỏ lưu khóa học!';
       }else{
          $insert_bookmark = $conn->prepare("INSERT INTO `bookmark`(user_id, playlist_id) VALUES(?,?)");
          $insert_bookmark->execute([$user_id, $list_id]);
-         $message[] = 'playlist saved!';
+         $message[] = 'Đã lưu khóa học!';
       }
 
    }else{
-      $message[] = 'please login first!';
+      $message[] = 'Đăng nhập trước đã!';
    }
 
 }
@@ -49,7 +49,7 @@ if(isset($_POST['save_list'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>playlist</title>
+   <title>QuachEdu</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -66,13 +66,13 @@ if(isset($_POST['save_list'])){
 
 <section class="playlist">
 
-   <h1 class="heading">playlist details</h1>
+   <h1 class="heading">Chi tiết khóa học</h1>
 
    <div class="row">
 
       <?php
          $select_playlist = $conn->prepare("SELECT * FROM `playlist` WHERE id = ? and status = ? LIMIT 1");
-         $select_playlist->execute([$get_id, 'active']);
+         $select_playlist->execute([$get_id, 'Mở']);
          if($select_playlist->rowCount() > 0){
             $fetch_playlist = $select_playlist->fetch(PDO::FETCH_ASSOC);
 
@@ -97,17 +97,17 @@ if(isset($_POST['save_list'])){
             <?php
                if($select_bookmark->rowCount() > 0){
             ?>
-            <button type="submit" name="save_list"><i class="fas fa-bookmark"></i><span>saved</span></button>
+            <button type="submit" name="save_list"><i class="fas fa-bookmark"></i><span>Đã lưu</span></button>
             <?php
                }else{
             ?>
-               <button type="submit" name="save_list"><i class="far fa-bookmark"></i><span>save playlist</span></button>
+               <button type="submit" name="save_list"><i class="far fa-bookmark"></i><span>Lưu khóa học</span></button>
             <?php
                }
             ?>
          </form>
          <div class="thumb">
-            <span><?= $total_videos; ?> videos</span>
+            <span><?= $total_videos; ?> Video</span>
             <img src="uploaded_files/<?= $fetch_playlist['thumb']; ?>" alt="">
          </div>
       </div>
@@ -129,7 +129,7 @@ if(isset($_POST['save_list'])){
 
       <?php
          }else{
-            echo '<p class="empty">this playlist was not found!</p>';
+            echo '<p class="empty">Không tìm thấy khóa học!</p>';
          }  
       ?>
 
@@ -143,13 +143,13 @@ if(isset($_POST['save_list'])){
 
 <section class="videos-container">
 
-   <h1 class="heading">playlist videos</h1>
+   <h1 class="heading">Video khóa học</h1>
 
    <div class="box-container">
 
       <?php
          $select_content = $conn->prepare("SELECT * FROM `content` WHERE playlist_id = ? AND status = ? ORDER BY date DESC");
-         $select_content->execute([$get_id, 'active']);
+         $select_content->execute([$get_id, 'Mở']);
          if($select_content->rowCount() > 0){
             while($fetch_content = $select_content->fetch(PDO::FETCH_ASSOC)){  
       ?>
@@ -161,7 +161,7 @@ if(isset($_POST['save_list'])){
       <?php
             }
          }else{
-            echo '<p class="empty">no videos added yet!</p>';
+            echo '<p class="empty">Chưa có video!</p>';
          }
       ?>
 
@@ -173,7 +173,11 @@ if(isset($_POST['save_list'])){
 
 
 
-
+<style>
+      .inline-btn {
+      background-color:rgb(142, 107, 255);
+   }
+</style>
 
 
 

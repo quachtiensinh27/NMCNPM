@@ -29,7 +29,7 @@ $total_bookmarked = $select_bookmark->rowCount();
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>profile</title>
+   <title>QuachEdu</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -44,15 +44,15 @@ $total_bookmarked = $select_bookmark->rowCount();
 
 <section class="profile">
 
-   <h1 class="heading">profile details</h1>
+   <h1 class="heading">Thông tin học sinh</h1>
 
    <div class="details">
 
       <div class="user">
          <img src="uploaded_files/<?= $fetch_profile['image']; ?>" alt="">
          <h3><?= $fetch_profile['name']; ?></h3>
-         <p>student</p>
-         <a href="update.php" class="inline-btn">update profile</a>
+         <p>Học sinh</p>
+         <a href="update.php" class="inline-btn">Cập nhật thông tin</a>
       </div>
 
       <div class="box-container">
@@ -62,10 +62,10 @@ $total_bookmarked = $select_bookmark->rowCount();
                <i class="fas fa-bookmark"></i>
                <div>
                   <h3><?= $total_bookmarked; ?></h3>
-                  <span>saved playlists</span>
+                  <span>Lưu khóa học</span>
                </div>
             </div>
-            <a href="#" class="inline-btn">view playlists</a>
+            <a href="bookmark.php" class="inline-btn">Xem khóa học</a>
          </div>
 
          <div class="box">
@@ -73,10 +73,10 @@ $total_bookmarked = $select_bookmark->rowCount();
                <i class="fas fa-heart"></i>
                <div>
                   <h3><?= $total_likes; ?></h3>
-                  <span>liked tutorials</span>
+                  <span>Thích</span>
                </div>
             </div>
-            <a href="#" class="inline-btn">view liked</a>
+            <a href="likes.php" class="inline-btn">Xem lượt thích</a>
          </div>
 
          <div class="box">
@@ -84,10 +84,10 @@ $total_bookmarked = $select_bookmark->rowCount();
                <i class="fas fa-comment"></i>
                <div>
                   <h3><?= $total_comments; ?></h3>
-                  <span>video comments</span>
+                  <span>Bình luận</span>
                </div>
             </div>
-            <a href="#" class="inline-btn">view comments</a>
+            <a href="comments.php" class="inline-btn">Xem bình luận</a>
          </div>
 
       </div>
@@ -101,7 +101,11 @@ $total_bookmarked = $select_bookmark->rowCount();
 
 
 
-
+<style>
+      .inline-btn {
+      background-color:rgb(142, 107, 255);
+   }
+</style>
 
 
 
@@ -113,7 +117,7 @@ $total_bookmarked = $select_bookmark->rowCount();
 
 <footer class="footer">
 
-   &copy; copyright @ 2022 by <span>mr. web designer</span> | all rights reserved!
+   <span>Nhóm 2</span> - Nhập môn công nghệ phần mềm
 
 </footer>
 

@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
 
    move_uploaded_file($image_tmp_name, $image_folder);
 
-   $message[] = 'new playlist created!';  
+   $message[] = 'Khóa học mới được tạo thành công!';  
 
 }
 
@@ -44,7 +44,7 @@ if(isset($_POST['submit'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Add Playlist</title>
+   <title>QuachEdu.Teacher</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -59,22 +59,22 @@ if(isset($_POST['submit'])){
    
 <section class="playlist-form">
 
-   <h1 class="heading">create playlist</h1>
+   <h1 class="heading">Tạo khóa học</h1>
 
    <form action="" method="post" enctype="multipart/form-data">
-      <p>playlist status <span>*</span></p>
+      <p>Trạng thái khóa học <span>*</span></p>
       <select name="status" class="box" required>
-         <option value="" selected disabled>-- select status</option>
-         <option value="active">active</option>
-         <option value="deactive">deactive</option>
+         <option value="" selected disabled>-- chọn trạng thái</option>
+         <option value="Mở">Mở</option>
+         <option value="Đóng">Đóng</option>
       </select>
-      <p>playlist title <span>*</span></p>
-      <input type="text" name="title" maxlength="100" required placeholder="enter playlist title" class="box">
-      <p>playlist description <span>*</span></p>
-      <textarea name="description" class="box" required placeholder="write description" maxlength="1000" cols="30" rows="10"></textarea>
-      <p>playlist thumbnail <span>*</span></p>
+      <p>Tên khóa học <span>*</span></p>
+      <input type="text" name="title" maxlength="100" required placeholder="Nhập tên khóa học" class="box">
+      <p>Mô tả <span>*</span></p>
+      <textarea name="description" class="box" required placeholder="Nội dung mô tả" maxlength="1000" cols="30" rows="10"></textarea>
+      <p>Ảnh bìa <span>*</span></p>
       <input type="file" name="image" accept="image/*" required class="box">
-      <input type="submit" value="create playlist" name="submit" class="btn">
+      <input type="submit" value="Tạo khóa học" name="submit" class="btn">
    </form>
 
 </section>

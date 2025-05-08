@@ -56,8 +56,8 @@ CREATE TABLE `comments` (
 CREATE TABLE `contact` (
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `number` int(10) NOT NULL,
-  `message` varchar(1000) NOT NULL
+  `message` varchar(1000) NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -75,7 +75,7 @@ CREATE TABLE `content` (
   `video` varchar(100) NOT NULL,
   `thumb` varchar(100) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp(),
-  `status` varchar(20) NOT NULL DEFAULT 'deactive'
+  `status` varchar(20) NOT NULL DEFAULT 'Đóng'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -103,7 +103,7 @@ CREATE TABLE `playlist` (
   `description` varchar(1000) NOT NULL,
   `thumb` varchar(100) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp(),
-  `status` varchar(20) NOT NULL DEFAULT 'deactive'
+  `status` varchar(20) NOT NULL DEFAULT 'Đóng'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -121,6 +121,23 @@ CREATE TABLE `tutors` (
   `image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO `tutors` (`id`, `name`, `profession`, `email`, `password`, `image`) VALUES
+('0001', 'Quách Ngọc Quang', 'Giáo viên toán học', 'thayquang@gmail.com', 'quach12345', NULL),
+('0002', 'Đặng Hoàng Nam', 'Giáo viên hóa học', 'thaynam@gmail.com', 'quach12345', NULL),
+('0003', 'Đoàn Đức Mạnh', 'Giáo viên vật lý', 'thaymanh@gmail.com', 'quach12345', NULL),
+('0004', 'Dương Trung Hiếu', 'Giáo viên tiếng anh', 'thayhieu@gmail.com', 'quach12345', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `email_verify`
+--
+CREATE TABLE `email_verify` (
+   `email` varchar(50) NOT NULL,
+   `verification_code` varchar(255) NOT NULL,
+   `name` varchar(50) NOT NULL,
+   `password` varchar(255) NOT NULL  -- Thêm cột lưu mật khẩu
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 -- --------------------------------------------------------
 
 --
@@ -132,7 +149,8 @@ CREATE TABLE `users` (
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `image` varchar(100) NOT NULL
+  `image` varchar(100) NOT NULL,
+  `state` varchar(100) NOT NULL DEFAULT 'unpaid'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 COMMIT;
 

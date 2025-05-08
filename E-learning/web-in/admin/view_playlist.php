@@ -19,6 +19,22 @@ if(isset($_GET['get_id'])){
 if(isset($_POST['delete_playlist'])){
    $delete_id = $_POST['playlist_id'];
    $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
+   // Xóa các video liên quan trong bảng content
+   $delete_videos = $conn->prepare("SELECT * FROM `content` WHERE playlist_id = ?");
+   $delete_videos->execute([$delete_id]);
+   while($fetch_video = $delete_videos->fetch(PDO::FETCH_ASSOC)){
+      // Xóa file video và thumbnail
+      if(file_exists('../uploaded_files/'.$fetch_video['thumb'])){
+         unlink('../uploaded_files/'.$fetch_video['thumb']);
+      }
+      if(file_exists('../uploaded_files/'.$fetch_video['video'])){
+         unlink('../uploaded_files/'.$fetch_video['video']);
+      }
+   }
+   // Xóa các bản ghi video trong database
+   $delete_content = $conn->prepare("DELETE FROM `content` WHERE playlist_id = ?");
+   $delete_content->execute([$delete_id]);
+   
    $delete_playlist_thumb = $conn->prepare("SELECT * FROM `playlist` WHERE id = ? LIMIT 1");
    $delete_playlist_thumb->execute([$delete_id]);
    $fetch_thumb = $delete_playlist_thumb->fetch(PDO::FETCH_ASSOC);
@@ -50,9 +66,9 @@ if(isset($_POST['delete_video'])){
       $delete_comments->execute([$delete_id]);
       $delete_content = $conn->prepare("DELETE FROM `content` WHERE id = ?");
       $delete_content->execute([$delete_id]);
-      $message[] = 'video deleted!';
+      $message[] = 'Đã xóa!';
    }else{
-      $message[] = 'video already deleted!';
+      $message[] = 'Khóa học đã xóa!';
    }
 
 }
@@ -66,7 +82,7 @@ if(isset($_POST['delete_video'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Playlist Details</title>
+   <title>QuachEdu.Teacher</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -81,7 +97,7 @@ if(isset($_POST['delete_video'])){
    
 <section class="playlist-details">
 
-   <h1 class="heading">playlist details</h1>
+   <h1 class="heading">Khóa học</h1>
 
    <?php
       $select_playlist = $conn->prepare("SELECT * FROM `playlist` WHERE id = ? AND tutor_id = ?");
@@ -104,15 +120,15 @@ if(isset($_POST['delete_video'])){
          <div class="description"><?= $fetch_playlist['description']; ?></div>
          <form action="" method="post" class="flex-btn">
             <input type="hidden" name="playlist_id" value="<?= $playlist_id; ?>">
-            <a href="update_playlist.php?get_id=<?= $playlist_id; ?>" class="option-btn">update playlist</a>
-            <input type="submit" value="delete playlist" class="delete-btn" onclick="return confirm('delete this playlist?');" name="delete">
+            <a href="update_playlist.php?get_id=<?= $playlist_id; ?>" class="option-btn">Cập nhật khóa học</a>
+            <input type="submit" value="Xóa" class="delete-btn" onclick="return confirm('delete this playlist?');" name="delete">
          </form>
       </div>
    </div>
    <?php
          }
       }else{
-         echo '<p class="empty">no playlist found!</p>';
+         echo '<p class="empty">Không tìm thấy khóa học!</p>';
       }
    ?>
 
@@ -120,9 +136,14 @@ if(isset($_POST['delete_video'])){
 
 <section class="contents">
 
-   <h1 class="heading">playlist videos</h1>
+   <h1 class="heading">Danh sách video</h1>
 
    <div class="box-container">
+
+   <div class="box" style="text-align: center;">
+      <h3 class="title" style="margin-bottom: .5rem;">Tạo video mới</h3>
+      <a href="add_content.php" class="btn">Thêm video</a>
+   </div>
 
    <?php
       $select_videos = $conn->prepare("SELECT * FROM `content` WHERE tutor_id = ? AND playlist_id = ?");
@@ -133,22 +154,22 @@ if(isset($_POST['delete_video'])){
    ?>
       <div class="box">
          <div class="flex">
-            <div><i class="fas fa-dot-circle" style="<?php if($fecth_videos['status'] == 'active'){echo 'color:limegreen'; }else{echo 'color:red';} ?>"></i><span style="<?php if($fecth_videos['status'] == 'active'){echo 'color:limegreen'; }else{echo 'color:red';} ?>"><?= $fecth_videos['status']; ?></span></div>
+            <div><i class="fas fa-dot-circle" style="<?php if($fecth_videos['status'] == 'Mở'){echo 'color:limegreen'; }else{echo 'color:red';} ?>"></i><span style="<?php if($fecth_videos['status'] == 'Mở'){echo 'color:limegreen'; }else{echo 'color:red';} ?>"><?= $fecth_videos['status']; ?></span></div>
             <div><i class="fas fa-calendar"></i><span><?= $fecth_videos['date']; ?></span></div>
          </div>
          <img src="../uploaded_files/<?= $fecth_videos['thumb']; ?>" class="thumb" alt="">
          <h3 class="title"><?= $fecth_videos['title']; ?></h3>
          <form action="" method="post" class="flex-btn">
             <input type="hidden" name="video_id" value="<?= $video_id; ?>">
-            <a href="update_content.php?get_id=<?= $video_id; ?>" class="option-btn">update</a>
-            <input type="submit" value="delete" class="delete-btn" onclick="return confirm('delete this video?');" name="delete_video">
+            <a href="update_content.php?get_id=<?= $video_id; ?>" class="option-btn">Cập nhật</a>
+            <input type="submit" value="Xóa" class="delete-btn" onclick="return confirm('delete this video?');" name="delete_video">
          </form>
-         <a href="view_content.php?get_id=<?= $video_id; ?>" class="btn">watch video</a>
+         <a href="view_content.php?get_id=<?= $video_id; ?>" class="btn">Xem video</a>
       </div>
    <?php
          }
       }else{
-         echo '<p class="empty">no videos added yet! <a href="add_content.php" class="btn" style="margin-top: 1.5rem;">add videos</a></p>';
+         
       }
    ?>
 

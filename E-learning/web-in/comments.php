@@ -20,9 +20,9 @@ if(isset($_POST['delete_comment'])){
    if($verify_comment->rowCount() > 0){
       $delete_comment = $conn->prepare("DELETE FROM `comments` WHERE id = ?");
       $delete_comment->execute([$delete_id]);
-      $message[] = 'comment deleted successfully!';
+      $message[] = 'Bình luận được xóa thành công!';
    }else{
-      $message[] = 'comment already deleted!';
+      $message[] = 'Bình luận đã được xóa!';
    }
 
 }
@@ -38,11 +38,11 @@ if(isset($_POST['update_now'])){
    $verify_comment->execute([$update_id, $update_box]);
 
    if($verify_comment->rowCount() > 0){
-      $message[] = 'comment already added!';
+      $message[] = 'Thêm bình luận thành công!';
    }else{
       $update_comment = $conn->prepare("UPDATE `comments` SET comment = ? WHERE id = ?");
       $update_comment->execute([$update_box, $update_id]);
-      $message[] = 'comment edited successfully!';
+      $message[] = 'Sửa bình luận thành công!';
    }
 
 }
@@ -55,7 +55,7 @@ if(isset($_POST['update_now'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>user comments</title>
+   <title>QuachEdu</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -78,26 +78,26 @@ if(isset($_POST['update_now'])){
          $fetch_edit_comment = $verify_comment->fetch(PDO::FETCH_ASSOC);
 ?>
 <section class="edit-comment">
-   <h1 class="heading">edti comment</h1>
+   <h1 class="heading">Sửa bình luận</h1>
    <form action="" method="post">
       <input type="hidden" name="update_id" value="<?= $fetch_edit_comment['id']; ?>">
-      <textarea name="update_box" class="box" maxlength="1000" required placeholder="please enter your comment" cols="30" rows="10"><?= $fetch_edit_comment['comment']; ?></textarea>
+      <textarea name="update_box" class="box" maxlength="1000" required placeholder="Sửa bình luận ở đây" cols="30" rows="10"><?= $fetch_edit_comment['comment']; ?></textarea>
       <div class="flex">
-         <a href="comments.php" class="inline-option-btn">cancel edit</a>
-         <input type="submit" value="update now" name="update_now" class="inline-btn">
+         <a href="comments.php" class="inline-option-btn">Hủy chỉnh sửa</a>
+         <input type="submit" value="Cập nhật" name="update_now" class="inline-btn">
       </div>
    </form>
 </section>
 <?php
    }else{
-      $message[] = 'comment was not found!';
+      $message[] = 'Không tìm thấy bình luận!';
    }
 }
 ?>
 
 <section class="comments">
 
-   <h1 class="heading">your comments</h1>
+   <h1 class="heading">Bình luận của tôi</h1>
 
    
    <div class="show-comments">
@@ -106,20 +106,26 @@ if(isset($_POST['update_now'])){
          $select_comments->execute([$user_id]);
          if($select_comments->rowCount() > 0){
             while($fetch_comment = $select_comments->fetch(PDO::FETCH_ASSOC)){
+               // Truy vấn thông tin nội dung
                $select_content = $conn->prepare("SELECT * FROM `content` WHERE id = ?");
                $select_content->execute([$fetch_comment['content_id']]);
                $fetch_content = $select_content->fetch(PDO::FETCH_ASSOC);
+
+               // Truy vấn thông tin playlist
+               $select_playlist = $conn->prepare("SELECT * FROM `playlist` WHERE id = ?");
+               $select_playlist->execute([$fetch_content['playlist_id']]);
+               $fetch_playlist = $select_playlist->fetch(PDO::FETCH_ASSOC);
       ?>
       <div class="box" style="<?php if($fetch_comment['user_id'] == $user_id){echo 'order:-1;';} ?>">
-         <div class="content"><span><?= $fetch_comment['date']; ?></span><p> - <?= $fetch_content['title']; ?> - </p><a href="watch_video.php?get_id=<?= $fetch_content['id']; ?>">view content</a></div>
+         <div class="content"><span><?= $fetch_comment['date']; ?></span><p> - <?= $fetch_playlist['title']; ?> - <?= $fetch_content['title']; ?> - </p><a href="watch_video.php?get_id=<?= $fetch_content['id']; ?>">Xem video</a></div>
          <p class="text"><?= $fetch_comment['comment']; ?></p>
          <?php
             if($fetch_comment['user_id'] == $user_id){ 
          ?>
          <form action="" method="post" class="flex-btn">
             <input type="hidden" name="comment_id" value="<?= $fetch_comment['id']; ?>">
-            <button type="submit" name="edit_comment" class="inline-option-btn">edit comment</button>
-            <button type="submit" name="delete_comment" class="inline-delete-btn" onclick="return confirm('delete this comment?');">delete comment</button>
+            <button type="submit" name="edit_comment" class="inline-option-btn">Sửa bình luận</button>
+            <button type="submit" name="delete_comment" class="inline-delete-btn" onclick="return confirm('delete this comment?');">Xóa</button>
          </form>
          <?php
          }
@@ -128,7 +134,7 @@ if(isset($_POST['update_now'])){
       <?php
        }
       }else{
-         echo '<p class="empty">no comments added yet!</p>';
+         echo '<p class="empty">Chưa có bình luận!</p>';
       }
       ?>
       </div>
@@ -141,7 +147,11 @@ if(isset($_POST['update_now'])){
 
 
 
-
+<style>
+      .inline-btn {
+      background-color:rgb(142, 107, 255);
+   }
+</style>
 
 
 
