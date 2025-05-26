@@ -51,7 +51,7 @@ if(isset($_POST['submit'])){
 
    if(!empty($image)){
       if($image_size > 2000000){
-         $message[] = 'Khích thước ảnh quá lớn!';
+         $message[] = 'Kích thước ảnh quá lớn! Không vượt quá 2 MB';
       }else{
          $update_image = $conn->prepare("UPDATE `tutors` SET `image` = ? WHERE id = ?");
          $update_image->execute([$rename, $tutor_id]);

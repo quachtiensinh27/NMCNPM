@@ -137,7 +137,7 @@ $total_bookmarked = $select_bookmark->rowCount();
 
 <section class="courses">
 
-   <h1 class="heading">Khóa học gần nhất</h1>
+   <h1 class="heading">Khóa học mới nhất</h1>
 
    <div class="box-container">
 
